@@ -36,5 +36,10 @@ namespace Test
         {
             //blabla
         }
+
+        public void testadam ()
+        {
+            //blabla
+        }
     }
 }
