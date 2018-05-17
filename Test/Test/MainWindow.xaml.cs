@@ -20,9 +20,16 @@ namespace Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Kan ni se detta pojkar och flickor :)
+
         public MainWindow()
         {
             InitializeComponent();
         }
+
+        public void TestarLite()
+            {
+            //Här händer det grejer!
+            }
     }
 }
