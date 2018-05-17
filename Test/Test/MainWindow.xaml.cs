@@ -31,5 +31,10 @@ namespace Test
             {
             //Här händer det grejer!
             }
+
+        public void test2()
+        {
+            //blabla
+        }
     }
 }
