@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Test.Database;
+using Test.Model;
+using Npgsql;
 
 namespace Test
 {
@@ -40,6 +43,28 @@ namespace Test
         public void testadam ()
         {
             //blabla
+        }
+
+        public void jontetest3()
+        {
+            // funkar ju kung det här
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                List<Employee> employees = db.GetAllEmployees();
+                leftListBox.Items.Refresh();
+                leftListBox.ItemsSource = employees;
+            }            
+           
+            catch (PostgresException ex)
+            {
+                // Ajaj, det gick inte bra.
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

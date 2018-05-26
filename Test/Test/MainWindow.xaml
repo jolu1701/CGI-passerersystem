@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="606.534" Width="813.352">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="216,141,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="button" Content="Hämta alla anställda" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Width="135" Click="button_Click"/>
+        <ListBox x:Name="leftListBox" HorizontalAlignment="Left" Height="523" Margin="18,35,0,0" VerticalAlignment="Top" Width="305"/>
 
     </Grid>
 </Window>
