@@ -23,7 +23,7 @@
             <ComboBoxItem>Utveckling</ComboBoxItem>
             <ComboBoxItem>Underhåll och lokalvård</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="613,451,0,0" VerticalAlignment="Top" Width="189">            
+        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="613,451,0,0" VerticalAlignment="Top" Width="189">
             <ComboBoxItem>Backend 1 OSD</ComboBoxItem>
             <ComboBoxItem>Frontend 1 OSD</ComboBoxItem>
             <ComboBoxItem>Utvecklingsteam 33</ComboBoxItem>
@@ -32,6 +32,13 @@
         </ComboBox>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="541,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Avdelning"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="541,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Grupp"/>
+        <Button x:Name="btnAddguest" Content="Lägg till kund" HorizontalAlignment="Left" Margin="1187,489,0,0" VerticalAlignment="Top" Width="75" Click="btnAddguest_Click"/>
+        <TextBox x:Name="txtFirstNameGuest" HorizontalAlignment="Left" Height="23" Margin="1168,301,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtLastNameGuest" HorizontalAlignment="Left" Height="23" Margin="1168,337,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="1168,378,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="1069,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="1069,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="1069,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Company"/>
 
 
     </Grid>

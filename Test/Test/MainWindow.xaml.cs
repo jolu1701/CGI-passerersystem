@@ -79,5 +79,20 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAddguest_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddGuest(txtFirstNameGuest.Text, txtLastNameGuest.Text, txtCompany.Text);
+            }
+
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }
