@@ -77,5 +77,26 @@ namespace Test.Database
 
             }
         }
+
+        public void AddMeeting(DateTime dt, int mh)
+        {
+            Meeting m = new Meeting();
+            m.MeetingDT = dt;
+            m.MeetingHolder = mh;
+
+            string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("dt", dt);
+                    cmd.Parameters.AddWithValue("mh", mh);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
     }
 }
