@@ -141,5 +141,23 @@ namespace Test.Database
                 }
             }
         }
+
+        public void RemoveEmployee(Employee e)
+        {
+            int id = e.id;
+
+            string stmt = "delete from employee where employeeid = @employeeid";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("employeeid", id); // Det här är för att "@"-grejen ovan ska funka. Det inom hartassar är det som man ropar på med snabel-a, det andra är den variabel som det ska vara lika med.
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
     }
 }

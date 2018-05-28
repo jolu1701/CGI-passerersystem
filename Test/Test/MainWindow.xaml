@@ -41,6 +41,7 @@
         <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="1069,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Company"/>
         <TextBox x:Name="txtDepartment" HorizontalAlignment="Left" Height="23" Margin="780,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAddDep" Content="Lägg till avdelning" HorizontalAlignment="Left" Margin="780,152,0,0" VerticalAlignment="Top" Width="120" Click="btnAddDep_Click"/>
+        <Button x:Name="btnDelEmp" Content="Ta bort anställd" HorizontalAlignment="Left" Margin="336,829,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click"/>
 
 
     </Grid>

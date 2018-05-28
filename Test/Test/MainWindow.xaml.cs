@@ -107,5 +107,21 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnDelEmp_Click(object sender, RoutedEventArgs e)
+        {
+            Employee choosenEmployee;
+            choosenEmployee = (Employee)leftListBox.SelectedItem;
+
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.RemoveEmployee(choosenEmployee);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
