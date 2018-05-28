@@ -28,7 +28,7 @@ namespace Test.Database
                         string tryer;
                         try
                         {
-                            tryer = reader.GetString(4);
+                            tryer = reader.GetString(4); //Kollar om det finns något i databasen för fält 4, dvs Team. Om det inte finns något teamid för den anställde så sätts teamid i programmet till "0"
                         }
                         catch (Exception)
                         {
@@ -44,7 +44,7 @@ namespace Test.Database
                             team = int.Parse(tryer),
                             phoneNumber = reader.GetString(5)
                         };
-                        employees.Add(e);
+                        employees.Add(e); //Lägger till den hämtade anställde från databasen till listan i VS.
                     }
                 }
                 return employees;
@@ -67,7 +67,7 @@ namespace Test.Database
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
-                    cmd.Parameters.AddWithValue("firstname", fn);
+                    cmd.Parameters.AddWithValue("firstname", fn); // Det här är för att "@"-grejen ovan ska funka. Det inom hartassar är det som man ropar på med snabel-a, det andra är den variabel som det ska vara lika med.
                     cmd.Parameters.AddWithValue("surname", sn);
                     cmd.Parameters.AddWithValue("phonenumber", pn);
                     cmd.Parameters.AddWithValue("department", dep);
@@ -97,6 +97,27 @@ namespace Test.Database
                     cmd.Parameters.AddWithValue("firstname", fn);
                     cmd.Parameters.AddWithValue("surname", sn);
                     cmd.Parameters.AddWithValue("company", co);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
+        public void AddMeeting(DateTime dt, int mh)
+        {
+            Meeting m = new Meeting();
+            m.MeetingDT = dt;
+            m.MeetingHolder = mh;
+
+            string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("dt", dt);
+                    cmd.Parameters.AddWithValue("mh", mh);
                     cmd.ExecuteNonQuery();
                 }
 
