@@ -83,6 +83,7 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Guest.cs" />
     <Compile Include="Model\Meeting.cs" />
+    <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

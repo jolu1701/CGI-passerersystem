@@ -103,6 +103,7 @@ namespace Test.Database
             }
         }
 
+
         public void AddMeeting(DateTime dt, int mh)
         {
             Meeting m = new Meeting();
@@ -158,6 +159,25 @@ namespace Test.Database
                 }
 
             }
+        }
+
+        public void AddTeam(string teamname)
+        {
+            Team t = new Team();
+            t.teamName = teamname;
+
+            string stmt = "Insert into team(teamname) Values(@teamname)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("teamname", teamname);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
         }
     }
 }

@@ -123,5 +123,18 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnAddTeam_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddTeam(txtTeam.Text);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }

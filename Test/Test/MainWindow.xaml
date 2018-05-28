@@ -42,6 +42,8 @@
         <TextBox x:Name="txtDepartment" HorizontalAlignment="Left" Height="23" Margin="780,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="btnAddDep" Content="Lägg till avdelning" HorizontalAlignment="Left" Margin="780,152,0,0" VerticalAlignment="Top" Width="120" Click="btnAddDep_Click"/>
         <Button x:Name="btnDelEmp" Content="Ta bort anställd" HorizontalAlignment="Left" Margin="336,829,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click"/>
+        <Button x:Name="btnAddTeam" Content="Lägg till team" HorizontalAlignment="Left" Margin="1210,152,0,0" VerticalAlignment="Top" Width="75" Click="btnAddTeam_Click"/>
+        <TextBox x:Name="txtTeam" HorizontalAlignment="Left" Height="23" Margin="1187,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
 
     </Grid>
