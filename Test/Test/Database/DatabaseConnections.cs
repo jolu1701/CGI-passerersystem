@@ -123,5 +123,23 @@ namespace Test.Database
 
             }
         }
+
+        public void AddDepartment(string name)
+        {
+            Department d = new Department();
+            d.Name = name;
+
+            string stmt = "Insert into department(departmentname) Values(@name)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("name", name);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

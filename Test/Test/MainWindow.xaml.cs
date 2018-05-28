@@ -71,7 +71,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.SelectedIndex + 1, comboBoxTeam.SelectedIndex+1);
+                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.SelectedIndex + 1, comboBoxTeam.SelectedIndex + 1);
             }
 
             catch (PostgresException ex)
@@ -93,6 +93,19 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void btnAddDep_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddDepartment(txtDepartment.Text);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
