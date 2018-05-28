@@ -77,5 +77,28 @@ namespace Test.Database
 
             }
         }
+
+        public void AddGuest(string fn, string sn, string co)
+        {
+            Guest g = new Guest();
+            g.firstName = fn;
+            g.surName = sn;
+            g.company = co;
+
+            string stmt = "Insert into guest(firstname,surname,company) Values(@firstname,@surname,@company)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("firstname", fn);
+                    cmd.Parameters.AddWithValue("surname", sn);
+                    cmd.Parameters.AddWithValue("company", co);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
     }
 }
