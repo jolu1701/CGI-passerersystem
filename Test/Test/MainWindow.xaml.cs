@@ -31,16 +31,16 @@ namespace Test
         }
 
         public void TestarLite()
-            {
+        {
             //Här händer det grejer!
-            }
+        }
 
         public void test2()
         {
             //blabla
         }
 
-        public void testadam ()
+        public void testadam()
         {
             //blabla
         }
@@ -58,13 +58,26 @@ namespace Test
                 List<Employee> employees = db.GetAllEmployees();
                 leftListBox.Items.Refresh();
                 leftListBox.ItemsSource = employees;
-            }            
-           
+            }
+
             catch (PostgresException ex)
             {
-                // Ajaj, det gick inte bra.
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.SelectedIndex + 1, comboBoxTeam.SelectedIndex+1);
+            }
+
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -5,10 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MainWindow" Height="606.534" Width="813.352">
+        Title="MainWindow" Height="900" Width="1400">
     <Grid>
-        <Button x:Name="button" Content="Hämta alla anställda" HorizontalAlignment="Left" Margin="49,10,0,0" VerticalAlignment="Top" Width="135" Click="button_Click"/>
-        <ListBox x:Name="leftListBox" HorizontalAlignment="Left" Height="523" Margin="18,35,0,0" VerticalAlignment="Top" Width="305"/>
+        <Button x:Name="button" Content="Hämta alla anställda" HorizontalAlignment="Left" Margin="94,10,0,0" VerticalAlignment="Top" Width="135" Click="button_Click"/>
+        <ListBox x:Name="leftListBox" HorizontalAlignment="Left" Height="814" Margin="18,35,0,0" VerticalAlignment="Top" Width="305"/>
+        <Button x:Name="btnAddEmployee" Content="Spara till databas" HorizontalAlignment="Left" Margin="653,489,0,0" VerticalAlignment="Top" Width="107" Click="btnAddEmployee_Click"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="613,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
+        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="613,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="613,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="541,301,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="541,339,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="541,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Telefonnr"/><LineBreak/><Run/></TextBlock>
+        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="613,414,0,0" VerticalAlignment="Top" Width="189">
+            <ComboBoxItem>IT</ComboBoxItem>
+            <ComboBoxItem>HR</ComboBoxItem>
+            <ComboBoxItem>Ekonomi</ComboBoxItem>
+            <ComboBoxItem>Utveckling</ComboBoxItem>
+            <ComboBoxItem>Underhåll och lokalvård</ComboBoxItem>
+        </ComboBox>
+        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="613,451,0,0" VerticalAlignment="Top" Width="189">            
+            <ComboBoxItem>Backend 1 OSD</ComboBoxItem>
+            <ComboBoxItem>Frontend 1 OSD</ComboBoxItem>
+            <ComboBoxItem>Utvecklingsteam 33</ComboBoxItem>
+            <ComboBoxItem>Utvecklingsteam X</ComboBoxItem>
+            <ComboBoxItem>UX 1</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="541,415,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Avdelning"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="541,451,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Grupp"/>
+
 
     </Grid>
 </Window>

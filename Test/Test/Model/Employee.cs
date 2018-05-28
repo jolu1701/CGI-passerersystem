@@ -12,10 +12,14 @@ namespace Test.Model
         public string firstName { get; set; }
         public string surName { get; set; }
         public string phoneNumber { get; set; }
+        public int department { get; set; }
+        public int team { get; set; }
 
+        
         public override string ToString()
         {
-            return id + " " + firstName + " " + surName;
+            return id + " " + firstName + " " + surName + " " + phoneNumber.ToString() + " Dep:" + department.ToString() + " Team:" + team.ToString();
         }
+        
     }
 }
