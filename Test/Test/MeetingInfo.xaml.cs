@@ -21,20 +21,25 @@ namespace Test
     /// </summary>
     public partial class MeetingInfo : Window
     {
-        
+
+
         public MeetingInfo(Model.Meeting selectedMeeting)
         {
             InitializeComponent();
+            selMeet = selectedMeeting;
             UpdateListbox(selectedMeeting);
             this.Title = selectedMeeting.ToString();
         }
 
+        Model.Meeting selMeet;
         private void btnAddGuest_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
+                int guestid = db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
+                db.AddMeetingGuest(guestid, selMeet.MeetingID, " ", DateTime.Now);
+                UpdateListbox(selMeet);
             }
             catch (PostgresException ex)
             {

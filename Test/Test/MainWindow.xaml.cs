@@ -167,7 +167,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text, DateTime.Parse(txtCheckin.Text), DateTime.Parse(txtCheckout.Text));
+                db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text, DateTime.Parse(txtCheckin.Text));
             }
 
             catch (PostgresException ex)
