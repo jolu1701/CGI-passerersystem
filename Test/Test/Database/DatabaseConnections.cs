@@ -215,30 +215,32 @@ namespace Test.Database
             Guest g;
             List<Guest> meetingGuests = new List<Guest>();
 
-            string stmt = "select g.guestid,g.firstname,g.surname,g.company from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid = 2";
+            string stmt = "select g.guestid,g.firstname,g.surname,g.company from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid =" +meetingID;
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
-                using (var reader = cmd.ExecuteReader())
                 {
-                cmd.Parameters.AddWithValue("meID", meetingID);
-                    while (reader.Read())
+                    using (var reader = cmd.ExecuteReader())
                     {
-
-                        g = new Guest()
+                        cmd.Parameters.AddWithValue("id", meetingID);
+                        while (reader.Read())
                         {
-                            id = reader.GetInt32(0),
-                            firstName = reader.GetString(1),
-                            surName = reader.GetString(2),
-                            company = reader.GetString(3)
-                        };
 
-                        meetingGuests.Add(g);
+                            g = new Guest()
+                            {
+                                id = reader.GetInt32(0),
+                                firstName = reader.GetString(1),
+                                surName = reader.GetString(2),
+                                company = reader.GetString(3)
+                            };
+
+                            meetingGuests.Add(g);
+                        }
                     }
+                    return meetingGuests;
                 }
-                return meetingGuests;
             }
         }
 
