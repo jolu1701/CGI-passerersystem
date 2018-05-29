@@ -32,6 +32,7 @@ namespace Test
         }
 
         Model.Meeting selMeet;
+        Model.GuestExtras selGuest;
         private void btnAddGuest_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -59,6 +60,25 @@ namespace Test
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnCheckOut_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.CheckOutGuest(selGuest);
+                dataGrid.Items.Refresh();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selGuest = (Model.GuestExtras)dataGrid.SelectedItem;
         }
     }
 }

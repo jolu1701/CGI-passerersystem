@@ -15,9 +15,9 @@
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="196,58,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="196,100,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
         <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="219,144,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuest_Click"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="141" Width="617"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="141" Width="617" SelectionChanged="dataGrid_SelectionChanged"/>
         <Button x:Name="button" Content="In" HorizontalAlignment="Left" Margin="632,230,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFA4D4A0"/>
-        <Button x:Name="button_Copy" Content="Ut" HorizontalAlignment="Left" Margin="632,260,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFF1C4C4"/>
+        <Button x:Name="btnCheckOut" Content="Ut" HorizontalAlignment="Left" Margin="632,260,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFF1C4C4" Click="btnCheckOut_Click"/>
 
     </Grid>
 </Window>
