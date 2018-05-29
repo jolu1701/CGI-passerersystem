@@ -342,5 +342,23 @@ namespace Test.Database
             }
         }
 
+        public void CheckOutGuest(GuestExtras g)
+        {
+            g.checkOut = DateTime.Now;
+
+            string stmt = "update meeting_guest set checkout = @co where fk_guestid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("co", DateTime.Now);
+                    cmd.Parameters.AddWithValue("id", g.id);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
     }
 }
