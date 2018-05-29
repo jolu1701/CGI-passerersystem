@@ -43,7 +43,7 @@ namespace Test
 
         public void testadam()
         {
-            //blabla
+            //Bengen spanar varje dag, dom vill ha tag i mig ej ej
         }
 
         public void jontetest3()
@@ -160,6 +160,20 @@ namespace Test
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedMeeting = (Meeting)dataGrid.SelectedItem;
+        }
+
+        private void btnAddmeetingguest_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text, DateTime.Parse(txtCheckin.Text), DateTime.Parse(txtCheckout.Text));
+            }
+
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
