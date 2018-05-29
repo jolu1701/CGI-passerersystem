@@ -23,6 +23,7 @@ namespace Test
     /// </summary>
     public partial class MainWindow : Window
     {
+        Meeting selectedMeeting;
         //Kan ni se detta pojkar och flickor :)
 
         public MainWindow()
@@ -71,7 +72,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.SelectedIndex + 1, comboBoxTeam.SelectedIndex + 1);
+                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.Text , comboBoxTeam.Text);
             }
 
             catch (PostgresException ex)
@@ -135,6 +136,30 @@ namespace Test
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnLoadMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetAllMeetings();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MeetingInfo minfo = new MeetingInfo(selectedMeeting);
+            minfo.Show();
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedMeeting = (Meeting)dataGrid.SelectedItem;
         }
     }
 }

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Test.Model
 {
-    class Meeting
+    public class Meeting
     {
         public int MeetingID { get; set; }
-        public DateTime MeetingDT { get; set; }
-
-        public int MeetingHolder { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime Time { get; set; }
+        public string MeetingHolder { get; set; }
+        public string Note { get; set; }
     }
 }

@@ -16,7 +16,10 @@ namespace Test.Database
             Employee e;
             List<Employee> employees = new List<Employee>(); 
 
-            string stmt = "select * from employee";
+            string stmt = "select m.employeeid, m.firstname, m.surname, t.teamname, d.departmentname, m.phonenumber from employee m " +
+                "inner join team t on m.fk_teamid=t.teamid " +
+                "inner join department d on m.fk_departmentid = d.departmentid order by m.employeeid asc";
+
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
@@ -25,25 +28,20 @@ namespace Test.Database
                 {
                     while (reader.Read())
                     {
-                        string tryer;
-                        try
-                        {
-                            tryer = reader.GetString(4); //Kollar om det finns något i databasen för fält 4, dvs Team. Om det inte finns något teamid för den anställde så sätts teamid i programmet till "0"
-                        }
-                        catch (Exception)
-                        {
-                            tryer = "0";
-                        }
-                        
+                                              
                         e = new Employee()
                         {
                             id = reader.GetInt32(0),
                             firstName = reader.GetString(1),
                             surName = reader.GetString(2),
-                            department = int.Parse(reader.GetString(3)),                            
-                            team = int.Parse(tryer),
+                            team = reader.GetString(3),
+                            department = reader.GetString(4),                            
                             phoneNumber = reader.GetString(5)
                         };
+
+                        if (e.team == "null")
+                            e.team = "";
+
                         employees.Add(e); //Lägger till den hämtade anställde från databasen till listan i VS.
                     }
                 }
@@ -51,7 +49,7 @@ namespace Test.Database
             }
         }
 
-        public void AddEmployee(string fn, string sn, string pn, int dep, int tm)
+        public void AddEmployee(string fn, string sn, string pn, string dep, string tm)
         {
             Employee e = new Employee();
             e.firstName = fn;
@@ -104,10 +102,10 @@ namespace Test.Database
         }
 
 
-        public void AddMeeting(DateTime dt, int mh)
+        public void AddMeeting(DateTime dt, string mh)
         {
             Meeting m = new Meeting();
-            m.MeetingDT = dt;
+            m.Date = dt;
             m.MeetingHolder = mh;
 
             string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
@@ -179,5 +177,70 @@ namespace Test.Database
             }
 
         }
+
+        public List<Meeting> GetAllMeetings()
+        {
+            Meeting m;
+            List<Meeting> meetings = new List<Meeting>();
+
+            string stmt = "select me.meetingid,me.date,em.firstname from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        m = new Meeting()
+                        {
+                            MeetingID = reader.GetInt32(0),
+                            Date = reader.GetDateTime(1),
+                            //Time = reader.GetDateTime(2),
+                            MeetingHolder = reader.GetString(2) /*+ " " + reader.GetString(3), */                           
+                            //Note = reader.GetString(4)
+                        };                                              
+
+                        meetings.Add(m); 
+                    }
+                }
+                return meetings;
+            }
+        }
+
+        public List<Guest> GetMeetingGuests(int meetingID) //Skapar gästlista för ett specifikt möte som styrs av inparametern meetingID. Funkar inte 100% än, bara hårdkodat mötesnr funkar än...
+        {
+            Guest g;
+            List<Guest> meetingGuests = new List<Guest>();
+
+            string stmt = "select g.guestid,g.firstname,g.surname,g.company from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid = 2";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                cmd.Parameters.AddWithValue("meID", meetingID);
+                    while (reader.Read())
+                    {
+
+                        g = new Guest()
+                        {
+                            id = reader.GetInt32(0),
+                            firstName = reader.GetString(1),
+                            surName = reader.GetString(2),
+                            company = reader.GetString(3)
+                        };
+
+                        meetingGuests.Add(g);
+                    }
+                }
+                return meetingGuests;
+            }
+        }
+
     }
 }

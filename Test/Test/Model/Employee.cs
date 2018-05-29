@@ -12,8 +12,8 @@ namespace Test.Model
         public string firstName { get; set; }
         public string surName { get; set; }
         public string phoneNumber { get; set; }
-        public int department { get; set; }
-        public int team { get; set; }
+        public string department { get; set; }
+        public string team { get; set; }
 
         
         public override string ToString()

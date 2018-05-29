@@ -13,6 +13,9 @@ namespace Test.Model
         public string surName { get; set; }
         public string company { get; set; }
 
-
+        public override string ToString()
+        {
+            return id + " " + firstName + " " + surName + " " + company;
+        }
     }
 }
