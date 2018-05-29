@@ -13,5 +13,10 @@ namespace Test.Model
         public DateTime Time { get; set; }
         public string MeetingHolder { get; set; }
         public string Note { get; set; }
+
+        public override string ToString()
+        {
+            return "Möte nr." + MeetingID.ToString() + " med " + MeetingHolder;
+        }
     }
 }

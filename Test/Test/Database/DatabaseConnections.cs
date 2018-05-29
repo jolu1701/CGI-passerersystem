@@ -183,7 +183,7 @@ namespace Test.Database
             Meeting m;
             List<Meeting> meetings = new List<Meeting>();
 
-            string stmt = "select me.meetingid,me.date,em.firstname from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
+            string stmt = "select me.meetingid,me.date,em.firstname,em.surname from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -199,7 +199,7 @@ namespace Test.Database
                             MeetingID = reader.GetInt32(0),
                             Date = reader.GetDateTime(1),
                             //Time = reader.GetDateTime(2),
-                            MeetingHolder = reader.GetString(2) /*+ " " + reader.GetString(3), */                           
+                            MeetingHolder = reader.GetString(2) + " " + reader.GetString(3),                           
                             //Note = reader.GetString(4)
                         };                                              
 

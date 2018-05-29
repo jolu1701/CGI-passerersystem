@@ -25,7 +25,8 @@ namespace Test
         public MeetingInfo(Model.Meeting selectedMeeting)
         {
             InitializeComponent();
-            UpdateListbox(selectedMeeting);                        
+            UpdateListbox(selectedMeeting);
+            this.Title = selectedMeeting.ToString();
         }
 
         private void btnAddGuest_Click(object sender, RoutedEventArgs e)
