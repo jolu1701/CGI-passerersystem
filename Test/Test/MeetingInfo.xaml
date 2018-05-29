@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MeetingInfo" Height="399.461" Width="308.086">
+        Title="MeetingInfo" Height="412.399" Width="308.086">
     <Grid>
         <ListBox x:Name="listBoxGuests" HorizontalAlignment="Left" Height="127" Margin="25,231,0,0" VerticalAlignment="Top" Width="251"/>
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="91,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -15,7 +15,7 @@
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="91,14,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="91,58,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="91,100,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
-        <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="114,144,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="114,144,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuest_Click"/>
 
     </Grid>
 </Window>

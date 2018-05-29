@@ -215,16 +215,16 @@ namespace Test.Database
             Guest g;
             List<Guest> meetingGuests = new List<Guest>();
 
-            string stmt = "select g.guestid,g.firstname,g.surname,g.company from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid =" +meetingID;
+            string stmt = "select g.guestid,g.firstname,g.surname,g.company from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid = @id";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
+                    cmd.Parameters.AddWithValue("id", meetingID);
                     using (var reader = cmd.ExecuteReader())
                     {
-                        cmd.Parameters.AddWithValue("id", meetingID);
                         while (reader.Read())
                         {
 

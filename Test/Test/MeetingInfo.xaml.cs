@@ -25,18 +25,34 @@ namespace Test
         public MeetingInfo(Model.Meeting selectedMeeting)
         {
             InitializeComponent();
+            UpdateListbox(selectedMeeting);                        
+        }
 
+        private void btnAddGuest_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
+                db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void UpdateListbox(Model.Meeting selectedMeeting)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                listBoxGuests.Items.Refresh();
                 listBoxGuests.ItemsSource = db.GetMeetingGuests(selectedMeeting.MeetingID);
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
-        
     }
 }
