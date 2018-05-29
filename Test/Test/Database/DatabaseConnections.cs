@@ -78,7 +78,7 @@ namespace Test.Database
 
         
 
-        public void AddGuest(string fn, string sn, string co)
+        public void AddGuest(string fn, string sn, string co )
         {
             Guest g = new Guest();
             g.firstName = fn;
@@ -101,6 +101,33 @@ namespace Test.Database
             }
         }
 
+        public void AddMeetingGuest( int gid, int mid, string bg, DateTime ci, DateTime cu)
+        {
+            MeetingGuest mg = new MeetingGuest();
+            mg.Guestid = gid;
+            mg.Meetingid = mid;
+            mg.Badge = bg;
+            mg.Checkin = ci;
+            mg.Checkout = cu;
+            
+
+            string stmt = "Insert into meeting_guest(fk_guestid, fk_meetingid, badge, checkin, checkout) Values(@guestid, @meetingid, @badge, @checkin, @checkout)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("guestid", gid);
+                    cmd.Parameters.AddWithValue("meetingid", mid);
+                    cmd.Parameters.AddWithValue("badge", bg);
+                    cmd.Parameters.AddWithValue("checkin", ci);
+                    cmd.Parameters.AddWithValue("checkout", cu);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
 
         public void AddMeeting(DateTime dt, string mh)
         {
