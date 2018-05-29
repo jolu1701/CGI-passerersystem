@@ -52,8 +52,8 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                listBoxGuests.Items.Refresh();
-                listBoxGuests.ItemsSource = db.GetMeetingGuests(selectedMeeting.MeetingID);
+                dataGrid.Items.Refresh();
+                dataGrid.ItemsSource = db.GetMeetingGuestsExtras(selectedMeeting.MeetingID);
             }
             catch (PostgresException ex)
             {

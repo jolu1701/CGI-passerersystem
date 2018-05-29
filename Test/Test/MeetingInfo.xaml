@@ -5,17 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MeetingInfo" Height="412.399" Width="346.091">
+        Title="MeetingInfo" Height="412.399" Width="676.01">
     <Grid>
-        <ListBox x:Name="listBoxGuests" HorizontalAlignment="Left" Height="127" Margin="25,231,0,0" VerticalAlignment="Top" Width="287"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="109,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="109,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="109,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="152,210,0,0" TextWrapping="Wrap" Text="Gäster" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.502"/>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="109,15,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
-        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="109,59,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="109,101,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
-        <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="132,145,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuest_Click"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="196,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="196,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="196,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="241,209,0,0" TextWrapping="Wrap" Text="Gäster" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.502"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="196,14,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="196,58,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="196,100,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
+        <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="219,144,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuest_Click"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="141" Width="617"/>
+        <Button x:Name="button" Content="In" HorizontalAlignment="Left" Margin="632,230,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFA4D4A0"/>
+        <Button x:Name="button_Copy" Content="Ut" HorizontalAlignment="Left" Margin="632,260,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFF1C4C4"/>
 
     </Grid>
 </Window>

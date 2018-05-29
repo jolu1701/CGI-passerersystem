@@ -24,32 +24,13 @@ namespace Test
     public partial class MainWindow : Window
     {
         Meeting selectedMeeting;
-        //Kan ni se detta pojkar och flickor :)
-
+        
         public MainWindow()
         {
             InitializeComponent();
+            this.Title = "CGI - Customer Guestbook Interface";
         }
 
-        public void TestarLite()
-        {
-            //Här händer det grejer!
-        }
-
-        public void test2()
-        {
-            //blabla
-        }
-
-        public void testadam()
-        {
-            //Bengen spanar varje dag, dom vill ha tag i mig ej ej
-        }
-
-        public void jontetest3()
-        {
-            // funkar ju kung det här
-        }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

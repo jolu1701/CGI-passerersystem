@@ -256,7 +256,7 @@ namespace Test.Database
             }
         }
 
-        public List<Guest> GetMeetingGuests(int meetingID) //Skapar gästlista för ett specifikt möte som styrs av inparametern meetingID. Funkar inte 100% än, bara hårdkodat mötesnr funkar än...
+        public List<Guest> GetMeetingGuests(int meetingID) //Skapar gästlista för ett specifikt möte som styrs av inparametern meetingID.
         {
             Guest g;
             List<Guest> meetingGuests = new List<Guest>();
@@ -283,6 +283,58 @@ namespace Test.Database
                             };
 
                             meetingGuests.Add(g);
+                        }
+                    }
+                    return meetingGuests;
+                }
+            }
+        }
+
+        public List<GuestExtras> GetMeetingGuestsExtras(int meetingID) //Skapar gästlista för ett specifikt möte som styrs av inparametern meetingID samt skickar med in-,utcheckning och badge, sparas sen i en fusionmodell .
+        {
+            GuestExtras ge;
+            List<GuestExtras> meetingGuests = new List<GuestExtras>();
+
+            string stmt = "select g.guestid,g.firstname,g.surname,g.company,mg.checkin,mg.checkout,mg.badge from guest g inner join meeting_guest mg on mg.fk_guestid = g.guestid inner join meeting me on mg.fk_meetingid = me.meetingid where meetingid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", meetingID);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            ge = new GuestExtras();
+
+
+                            ge.id = reader.GetInt32(0);
+                            ge.firstName = reader.GetString(1);
+                            ge.surName = reader.GetString(2);
+                            ge.company = reader.GetString(3);
+                            try
+                            {
+                                ge.checkIn = reader.GetDateTime(4);
+                            }
+                            catch (Exception)
+                            {
+                                
+                            }
+                            try
+                            {
+                                ge.checkOut = reader.GetDateTime(5);
+                            }
+                            catch (Exception)
+                            {
+                                
+                            }
+                            ge.badge = reader.GetString(6);
+                            
+
+                            meetingGuests.Add(ge);
                         }
                     }
                     return meetingGuests;
