@@ -33,6 +33,7 @@ namespace Test
                 DatabaseConnections db = new DatabaseConnections();
                 employees = db.GetAllEmployees();
                 UpdateComboBoxes();
+                UpdateDatagrid();
             }
 
             catch (PostgresException ex)
@@ -46,15 +47,24 @@ namespace Test
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (txtFirstName.Text == null || txtFirstName.Text == "" || txtSurName.Text == null || txtSurName.Text == "" || txtPhoneNumber.Text == null || txtPhoneNumber.Text == "" || comboBoxDepartment.SelectedIndex < 0 || comboBoxTeam.SelectedIndex < 0)
+                MessageBox.Show("Du måste fylla i samtliga fält");
+            else
             {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.Text, comboBoxTeam.Text);
-            }
+                try
+                {
+                    DatabaseConnections db = new DatabaseConnections();
+                    Department dep = (Department)comboBoxDepartment.SelectedItem;
+                    Team tem = (Team)comboBoxTeam.SelectedItem;
+                    db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.Text, dep.DepartmentID, comboBoxTeam.Text, tem.id);
+                    UpdateDatagrid();
+                    ClearTextBoxes();
+                }
 
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
+                catch (PostgresException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -72,9 +82,7 @@ namespace Test
             {
                 MessageBox.Show(ex.Message);
             }
-
-            dataGrid.Items.Refresh();
-            dataGrid.ItemsSource = employees;
+            UpdateDatagrid();
         }
 
 
@@ -93,9 +101,24 @@ namespace Test
             }
         }
 
+        public void UpdateDatagrid()
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetAllEmployees();
+            }
+
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             choosenEmployee = (Employee)dataGrid.SelectedItem;
+            btnDelEmp.IsEnabled = true;
         }
 
         private void btnAdminTeam_Click(object sender, RoutedEventArgs e)
@@ -108,6 +131,26 @@ namespace Test
         {
             AdminDepartment ad = new AdminDepartment();
             ad.Show();
+        }
+
+        private void comboBoxTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {            
+                btnAddEmployee.IsEnabled = true;
+        }
+
+        private void ClearTextBoxes()
+        {
+            txtFirstName.Text = String.Empty;
+            txtSurName.Text = String.Empty;
+            txtPhoneNumber.Text = String.Empty;
+            comboBoxDepartment.SelectedIndex = -1;
+            comboBoxTeam.SelectedIndex = -1;
+            btnAddEmployee.IsEnabled = false;
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+       
         }
     }
 }

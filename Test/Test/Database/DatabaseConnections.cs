@@ -49,7 +49,7 @@ namespace Test.Database
             }
         }
 
-        public void AddEmployee(string fn, string sn, string pn, string dep, string tm)
+        public void AddEmployee(string fn, string sn, string pn, string dep, int depid, string tm, int temid)
         {
             Employee e = new Employee();
             e.firstName = fn;
@@ -68,8 +68,8 @@ namespace Test.Database
                     cmd.Parameters.AddWithValue("firstname", fn); // Det här är för att "@"-grejen ovan ska funka. Det inom hartassar är det som man ropar på med snabel-a, det andra är den variabel som det ska vara lika med.
                     cmd.Parameters.AddWithValue("surname", sn);
                     cmd.Parameters.AddWithValue("phonenumber", pn);
-                    cmd.Parameters.AddWithValue("department", dep);
-                    cmd.Parameters.AddWithValue("team", tm);
+                    cmd.Parameters.AddWithValue("department", depid);
+                    cmd.Parameters.AddWithValue("team", temid);
                     cmd.ExecuteNonQuery();
                 }
 
