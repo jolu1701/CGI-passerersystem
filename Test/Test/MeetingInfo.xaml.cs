@@ -21,8 +21,6 @@ namespace Test
     /// </summary>
     public partial class MeetingInfo : Window
     {
-
-
         public MeetingInfo(Model.Meeting selectedMeeting)
         {
             InitializeComponent();
@@ -35,16 +33,24 @@ namespace Test
         Model.GuestExtras selGuest;
         private void btnAddGuest_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (txtFirstName.Text == "" || txtCompany.Text == "" || txtSurName.Text == "")
             {
-                DatabaseConnections db = new DatabaseConnections();
-                int guestid = db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
-                db.AddMeetingGuest(guestid, selMeet.MeetingID, " ", DateTime.Now);
-                UpdateListbox(selMeet);
+                MessageBox.Show("Du måste skriva förnamn, efternamn & företag");                
             }
-            catch (PostgresException ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                try
+                {
+                    DatabaseConnections db = new DatabaseConnections();
+                    int guestid = db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
+                    db.AddMeetingGuest(guestid, selMeet.MeetingID, " ", DateTime.Now);
+                    UpdateListbox(selMeet);
+                    clearGuestTextBox();
+                }
+                catch (PostgresException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 
@@ -78,7 +84,50 @@ namespace Test
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selGuest = (Model.GuestExtras)dataGrid.SelectedItem;
+            try
+            {
+                guestBtnOn();
+                selGuest = (Model.GuestExtras)dataGrid.SelectedItem;
+            }
+            catch (Exception)
+            {
+                guestBtnOff();
+            }
+        }
+
+        private void btnDeleteGuest_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.RemoveGuestFromMeeting(selGuest);
+                UpdateListbox(selMeet);
+                guestBtnOff();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void guestBtnOn()
+        {
+            btnDeleteGuest.IsEnabled = true;
+            btnCheckIn.IsEnabled = true;
+            btnCheckOut.IsEnabled = true;
+        }
+
+        private void guestBtnOff()
+        {
+            btnDeleteGuest.IsEnabled = false;
+            btnCheckIn.IsEnabled = false;
+            btnCheckOut.IsEnabled = false;
+        }
+
+        private void clearGuestTextBox()
+        {
+            txtFirstName.Text = "";
+            txtSurName.Text = "";
+            txtCompany.Text = "";
         }
     }
 }

@@ -141,7 +141,15 @@ namespace Test
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            selectedMeeting = (Meeting)dataGrid.SelectedItem;
+            try
+            {
+                selectedMeeting = (Meeting)dataGrid.SelectedItem;
+            }
+
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         private void btnAddmeetingguest_Click(object sender, RoutedEventArgs e)
