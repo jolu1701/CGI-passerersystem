@@ -9,7 +9,7 @@
     <Grid>
         <Frame Content="" HorizontalAlignment="Left" Height="661" VerticalAlignment="Top" Width="1301" Margin="46,100,0,0" Background="#FFE2D9D9" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
         <Image HorizontalAlignment="Left" Height="124" Margin="31,-11,0,0" VerticalAlignment="Top" Width="140" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
-        <Button x:Name="btnDisco" Content="Disco" HorizontalAlignment="Left" Margin="1207,52,0,0" VerticalAlignment="Top" Width="75" Click="btnDisco_Click"/>
+        <Button x:Name="btnAdmin" Content="Administration" HorizontalAlignment="Left" Margin="1122,28,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="btnAdmin_Click" />
         <Label x:Name="lblDailymeeting" Content="Dagens möten" HorizontalAlignment="Left" Margin="457,100,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="99,135,0,0" VerticalAlignment="Top" Height="523" Width="890" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8"/>
         <TextBox x:Name="txtGuestid" HorizontalAlignment="Left" Height="23" Margin="1108,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>

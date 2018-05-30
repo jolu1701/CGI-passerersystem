@@ -77,9 +77,7 @@ namespace Test
             }
         }
 
-        
-
-        private void btnDisco_Click(object sender, RoutedEventArgs e)
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
             Admin admin = new Admin();
             this.Content = admin;
