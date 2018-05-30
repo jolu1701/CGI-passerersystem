@@ -33,8 +33,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                dataGrid.ItemsSource = db.GetAllMeetings();
-                UpdateComboBoxes();
+                dataGrid.ItemsSource = db.GetAllMeetings();                
             }
             catch (PostgresException ex)
             {
@@ -42,100 +41,7 @@ namespace Test
             }
         }
 
-        List<Employee> employees;
-
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                employees = db.GetAllEmployees();
-                leftListBox.Items.Refresh();
-                leftListBox.ItemsSource = employees;
-            }
-
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddEmployee(txtFirstName.Text, txtSurName.Text, txtPhoneNumber.Text, comboBoxDepartment.Text , comboBoxTeam.Text);
-            }
-
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnAddguest_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddGuest(txtFirstNameGuest.Text, txtLastNameGuest.Text, txtCompany.Text);
-            }
-
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void btnAddDep_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddDepartment(txtDepartment.Text);
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnDelEmp_Click(object sender, RoutedEventArgs e)
-        {
-            Employee choosenEmployee;
-            choosenEmployee = (Employee)leftListBox.SelectedItem;
-
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.RemoveEmployee(choosenEmployee);
-                employees = db.GetAllEmployees();
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            leftListBox.Items.Refresh();
-            leftListBox.ItemsSource = employees;
-        }
-
-        private void btnAddTeam_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddTeam(txtTeam.Text);
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+        
        
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -153,7 +59,7 @@ namespace Test
 
             catch (Exception)
             {
-                throw;
+                
             }
         }
 
@@ -171,20 +77,12 @@ namespace Test
             }
         }
 
-        public void UpdateComboBoxes()
+        
+
+        private void btnDisco_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                comboBoxDepartment.ItemsSource = db.GetAllDepartments();
-                comboBoxTeam.ItemsSource = db.GetAllTeams();
-            }
-
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            Admin admin = new Admin();
+            this.Content = admin;
         }
-
     }
 }

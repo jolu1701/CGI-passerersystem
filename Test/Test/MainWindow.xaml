@@ -7,31 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="900" Width="1400">
     <Grid>
-        <Button x:Name="button" Content="Hämta alla anställda" HorizontalAlignment="Left" Margin="94,102,0,0" VerticalAlignment="Top" Width="135" Click="button_Click"/>
-        <ListBox x:Name="leftListBox" HorizontalAlignment="Left" Height="686" Margin="18,127,0,0" VerticalAlignment="Top" Width="305"/>
-        <Button x:Name="btnAddEmployee" Content="Spara till databas" HorizontalAlignment="Left" Margin="1196,810,0,0" VerticalAlignment="Top" Width="107" Click="btnAddEmployee_Click"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="1156,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
-        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="1156,659,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="23" Margin="1156,698,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1084,622,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="1084,660,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="1084,699,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Telefonnr"/><LineBreak/><Run/></TextBlock>
-        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="1156,735,0,0" VerticalAlignment="Top" Width="189"/>
-        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="1156,772,0,0" VerticalAlignment="Top" Width="189"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="1084,736,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Avdelning"/>
-        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="1084,772,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Grupp"/>
-        <Button x:Name="btnAddguest" Content="Lägg till kund" HorizontalAlignment="Left" Margin="1247,578,0,0" VerticalAlignment="Top" Width="75" Click="btnAddguest_Click"/>
-        <TextBox x:Name="txtFirstNameGuest" HorizontalAlignment="Left" Height="23" Margin="1228,473,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtLastNameGuest" HorizontalAlignment="Left" Height="23" Margin="1228,509,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="1228,550,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="1156,473,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="1156,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="1156,550,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Company"/>
-        <TextBox x:Name="txtDepartment" HorizontalAlignment="Left" Height="23" Margin="1247,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnAddDep" Content="Lägg till avdelning" HorizontalAlignment="Left" Margin="1247,60,0,0" VerticalAlignment="Top" Width="120" Click="btnAddDep_Click"/>
-        <Button x:Name="btnDelEmp" Content="Ta bort anställd" HorizontalAlignment="Left" Margin="109,835,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click"/>
-        <Button x:Name="btnAddTeam" Content="Lägg till team" HorizontalAlignment="Left" Margin="1270,192,0,0" VerticalAlignment="Top" Width="75" Click="btnAddTeam_Click"/>
-        <TextBox x:Name="txtTeam" HorizontalAlignment="Left" Height="23" Margin="1247,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="336,127,0,0" VerticalAlignment="Top" Height="686" Width="725" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8"/>
         <TextBox x:Name="txtGuestid" HorizontalAlignment="Left" Height="23" Margin="1174,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
         <TextBox x:Name="txtMeetingid" HorizontalAlignment="Left" Height="23" Margin="1174,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
@@ -45,6 +20,7 @@
         <TextBlock x:Name="textBlock_Copy11" HorizontalAlignment="Left" Margin="1102,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="checkout"/><LineBreak/><Run/></TextBlock>
         <Button x:Name="btnAddmeetingguest" Content="btnAddMeetingguest" HorizontalAlignment="Left" Margin="1273,428,0,0" VerticalAlignment="Top" Width="75" Click="btnAddmeetingguest_Click"/>
         <Image HorizontalAlignment="Left" Height="96" Margin="18,10,0,0" VerticalAlignment="Top" Width="116" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
+        <Button x:Name="btnDisco" Content="Disco" HorizontalAlignment="Left" Margin="949,60,0,0" VerticalAlignment="Top" Width="75" Click="btnDisco_Click"/>
 
 
     </Grid>
