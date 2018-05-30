@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="MeetingInfo" Height="433.424" Width="676.01">
+        Title="MeetingInfo" Height="666.308" Width="848.01">
     <Grid>
         <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="196,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="196,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -15,10 +15,15 @@
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="196,58,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="196,100,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
         <Button x:Name="btnAddGuest" Content="Lägg till" HorizontalAlignment="Left" Margin="219,144,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuest_Click"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="141" Width="617" SelectionChanged="dataGrid_SelectionChanged"/>
-        <Button x:Name="btnCheckIn" Content="In" HorizontalAlignment="Left" Margin="632,230,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFA4D4A0" IsEnabled="False"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,230,0,0" VerticalAlignment="Top" Height="141" Width="617" SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA2A2A2" VerticalGridLinesBrush="#FFA0A0A0"/>
+        <Button x:Name="btnCheckIn" Content="In" HorizontalAlignment="Left" Margin="632,230,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFA4D4A0" IsEnabled="False" Click="btnCheckIn_Click"/>
         <Button x:Name="btnCheckOut" Content="Ut" HorizontalAlignment="Left" Margin="632,260,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFF1C4C4" Click="btnCheckOut_Click" IsEnabled="False"/>
         <Button x:Name="btnDeleteGuest" Content="Ta bort gäst" HorizontalAlignment="Left" Margin="552,205,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteGuest_Click" IsEnabled="False"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="192,414,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.502" Width="124" Height="21"><Run Text="Anställda"/><Run Text="-mötesgäster"/><LineBreak/><Run/></TextBlock>
+        <DataGrid x:Name="dataGridMeetingEmployees" HorizontalAlignment="Left" Margin="10,435,0,0" VerticalAlignment="Top" Height="141" Width="471" HorizontalGridLinesBrush="#FFA2A2A2" VerticalGridLinesBrush="#FFA0A0A0" SelectionChanged="dataGridMeetingEmployees_SelectionChanged"/>
+        <DataGrid x:Name="dataGridAllEmployees" HorizontalAlignment="Left" Margin="496,435,0,0" VerticalAlignment="Top" Height="141" Width="334" SelectionChanged="dataGridAllEmployees_SelectionChanged"/>
+        <Button x:Name="btnAddEmployeeToMeet" Content="Lägg till" HorizontalAlignment="Left" Margin="755,581,0,0" VerticalAlignment="Top" Width="75" Click="btnAddEmployeeToMeet_Click"/>
+        <Button x:Name="btnRemoveEmployeeFromMeet" Content="Ta bort deltagare" HorizontalAlignment="Left" Margin="10,581,0,0" VerticalAlignment="Top" Width="108" Click="btnRemoveEmployeeFromMeet_Click"/>
 
     </Grid>
 </Window>

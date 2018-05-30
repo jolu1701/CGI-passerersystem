@@ -32,8 +32,7 @@
         <Button x:Name="btnDelEmp" Content="Ta bort anställd" HorizontalAlignment="Left" Margin="109,835,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click"/>
         <Button x:Name="btnAddTeam" Content="Lägg till team" HorizontalAlignment="Left" Margin="1270,192,0,0" VerticalAlignment="Top" Width="75" Click="btnAddTeam_Click"/>
         <TextBox x:Name="txtTeam" HorizontalAlignment="Left" Height="23" Margin="1247,164,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="336,35,0,0" VerticalAlignment="Top" Height="760" Width="725" MouseDoubleClick="dataGrid_MouseDoubleClick" SelectionChanged="dataGrid_SelectionChanged"/>
-        <Button x:Name="btnLoadMeeting" Content="Ladda möten" HorizontalAlignment="Left" Margin="387,10,0,0" VerticalAlignment="Top" Width="129" Click="btnLoadMeeting_Click"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="336,35,0,0" VerticalAlignment="Top" Height="760" Width="725" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8"/>
         <TextBox x:Name="txtGuestid" HorizontalAlignment="Left" Height="23" Margin="1174,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
         <TextBox x:Name="txtMeetingid" HorizontalAlignment="Left" Height="23" Margin="1174,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>
         <TextBox x:Name="txtBadgey" HorizontalAlignment="Left" Height="23" Margin="1174,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="189"/>

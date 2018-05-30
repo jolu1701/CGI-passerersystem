@@ -122,16 +122,15 @@ namespace Test.Database
             return g.id;
         }
 
-        public void AddMeetingGuest( int gid, int mid, string bg, DateTime ci)
+        public void AddMeetingGuest( int gid, int mid, string bg)
         {
             MeetingGuest mg = new MeetingGuest();
             mg.Guestid = gid;
             mg.Meetingid = mid;
             mg.Badge = bg;
-            mg.Checkin = ci;
             
 
-            string stmt = "Insert into meeting_guest(fk_guestid, fk_meetingid, badge, checkin) Values(@guestid, @meetingid, @badge, @checkin)";
+            string stmt = "Insert into meeting_guest(fk_guestid, fk_meetingid, badge) Values(@guestid, @meetingid, @badge)";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -141,7 +140,6 @@ namespace Test.Database
                     cmd.Parameters.AddWithValue("guestid", gid);
                     cmd.Parameters.AddWithValue("meetingid", mid);
                     cmd.Parameters.AddWithValue("badge", bg);
-                    cmd.Parameters.AddWithValue("checkin", ci);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -341,7 +339,7 @@ namespace Test.Database
                 }
             }
         }
-        //attans bananer
+        
 
         public void CheckOutGuest(GuestExtras g)
         {
@@ -355,6 +353,25 @@ namespace Test.Database
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
                     cmd.Parameters.AddWithValue("co", DateTime.Now);
+                    cmd.Parameters.AddWithValue("id", g.id);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
+        public void CheckInGuest(GuestExtras g)
+        {
+            g.checkIn = DateTime.Now;
+
+            string stmt = "update meeting_guest set checkin = @ci where fk_guestid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("ci", DateTime.Now);
                     cmd.Parameters.AddWithValue("id", g.id);
                     cmd.ExecuteNonQuery();
                 }
@@ -432,6 +449,72 @@ namespace Test.Database
                     }
                 }
                 return teams;
+            }
+        }
+
+        public List<Employee> GetMeetingEmployees(int meetingID) //Skapar lista över anställda deltagar på ett specifikt möte som styrs av inparametern meetingID.
+        {
+            Employee e;
+            List<Employee> meetingEmployees = new List<Employee>();
+
+            string stmt = "select e.employeeid,e.firstname,e.surname,e.phonenumber, d.departmentname, t.teamname from employee e inner join meeting_attendees ma on ma.fk_employeeid = e.employeeid inner join meeting me on ma.fk_meetingid = me.meetingid inner join department d on e.fk_departmentid = d.departmentid inner join team t on e.fk_teamid = t.teamid where ma.fk_meetingid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", meetingID);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            e = new Employee();
+
+                            e.id = reader.GetInt32(0);
+                            e.firstName = reader.GetString(1);
+                            e.surName = reader.GetString(2);
+                            e.phoneNumber = reader.GetString(3);
+                            e.department = reader.GetString(4);
+                            e.team = reader.GetString(5);                         
+                            
+                            meetingEmployees.Add(e);
+                        }
+                    }
+                    return meetingEmployees;
+                }
+            }
+        }
+
+        public void AddEmployeeToMeeting(Employee e,Meeting m)
+        {
+            string stmt = "Insert into meeting_attendees(fk_employeeid, fk_meetingid) Values(@employeeid, @meetingid)";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("employeeid", e.id);
+                    cmd.Parameters.AddWithValue("meetingid", m.MeetingID);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
+        public void RemoveEmployeeFromMeeting(Employee e)
+        {
+            string stmt = "DELETE from meeting_attendees where fk_employeeid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", e.id);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 

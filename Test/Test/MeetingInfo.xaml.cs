@@ -25,12 +25,14 @@ namespace Test
         {
             InitializeComponent();
             selMeet = selectedMeeting;
-            UpdateListbox(selectedMeeting);
+            UpdateDatagrid(selectedMeeting);
             this.Title = selectedMeeting.ToString();
         }
 
         Model.Meeting selMeet;
         Model.GuestExtras selGuest;
+        Model.Employee selRightEmpl;
+        Model.Employee selLeftEmpl;
         private void btnAddGuest_Click(object sender, RoutedEventArgs e)
         {
             if (txtFirstName.Text == "" || txtCompany.Text == "" || txtSurName.Text == "")
@@ -43,8 +45,8 @@ namespace Test
                 {
                     DatabaseConnections db = new DatabaseConnections();
                     int guestid = db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
-                    db.AddMeetingGuest(guestid, selMeet.MeetingID, " ", DateTime.Now);
-                    UpdateListbox(selMeet);
+                    db.AddMeetingGuest(guestid, selMeet.MeetingID, " ");
+                    UpdateDatagrid(selMeet);
                     clearGuestTextBox();
                 }
                 catch (PostgresException ex)
@@ -54,13 +56,19 @@ namespace Test
             }
         }
 
-        private void UpdateListbox(Model.Meeting selectedMeeting)
+        private void UpdateDatagrid(Model.Meeting selectedMeeting)
         {
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
                 dataGrid.Items.Refresh();
                 dataGrid.ItemsSource = db.GetMeetingGuestsExtras(selectedMeeting.MeetingID);
+
+                dataGridMeetingEmployees.Items.Refresh();
+                dataGridMeetingEmployees.ItemsSource = db.GetMeetingEmployees(selectedMeeting.MeetingID);
+
+                dataGridAllEmployees.Items.Refresh();
+                dataGridAllEmployees.ItemsSource = db.GetAllEmployees();
             }
             catch (PostgresException ex)
             {
@@ -74,7 +82,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.CheckOutGuest(selGuest);
-                dataGrid.Items.Refresh();
+                UpdateDatagrid(selMeet);
             }
             catch (PostgresException ex)
             {
@@ -101,7 +109,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.RemoveGuestFromMeeting(selGuest);
-                UpdateListbox(selMeet);
+                UpdateDatagrid(selMeet);
                 guestBtnOff();
             }
             catch (PostgresException ex)
@@ -128,6 +136,72 @@ namespace Test
             txtFirstName.Text = "";
             txtSurName.Text = "";
             txtCompany.Text = "";
+        }
+
+        private void btnCheckIn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.CheckInGuest(selGuest);
+                UpdateDatagrid(selMeet);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnAddEmployeeToMeet_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.AddEmployeeToMeeting(selRightEmpl,selMeet);
+                UpdateDatagrid(selMeet);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridAllEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {                
+                selRightEmpl = (Model.Employee)dataGridAllEmployees.SelectedItem;
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void btnRemoveEmployeeFromMeet_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.RemoveEmployeeFromMeeting(selLeftEmpl);
+                UpdateDatagrid(selMeet);                
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void dataGridMeetingEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                selLeftEmpl = (Model.Employee)dataGridMeetingEmployees.SelectedItem;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

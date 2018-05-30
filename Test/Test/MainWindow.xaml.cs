@@ -29,8 +29,20 @@ namespace Test
         {
             InitializeComponent();
             this.Title = "CGI - Customer Guestbook Interface";
-            UpdateComboBoxes();
+
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetAllMeetings();
+                UpdateComboBoxes();
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+
+        List<Employee> employees;
 
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -38,7 +50,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                List<Employee> employees = db.GetAllEmployees();
+                employees = db.GetAllEmployees();
                 leftListBox.Items.Refresh();
                 leftListBox.ItemsSource = employees;
             }
@@ -100,11 +112,15 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.RemoveEmployee(choosenEmployee);
+                employees = db.GetAllEmployees();
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            leftListBox.Items.Refresh();
+            leftListBox.ItemsSource = employees;
         }
 
         private void btnAddTeam_Click(object sender, RoutedEventArgs e)
@@ -120,18 +136,7 @@ namespace Test
             }
         }
 
-        private void btnLoadMeeting_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                dataGrid.ItemsSource = db.GetAllMeetings();
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+       
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -157,7 +162,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text, DateTime.Parse(txtCheckin.Text));
+                db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text);
             }
 
             catch (PostgresException ex)
