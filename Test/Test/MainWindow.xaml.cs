@@ -29,6 +29,7 @@ namespace Test
         {
             InitializeComponent();
             this.Title = "CGI - Customer Guestbook Interface";
+            UpdateComboBoxes();
         }
 
 
@@ -156,5 +157,21 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public void UpdateComboBoxes()
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                comboBoxDepartment.ItemsSource = db.GetAllDepartments();
+                comboBoxTeam.ItemsSource = db.GetAllTeams();
+            }
+
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

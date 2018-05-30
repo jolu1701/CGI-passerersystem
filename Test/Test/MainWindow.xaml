@@ -16,20 +16,8 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="1084,622,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="1084,660,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="1084,699,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23"><Run Text="Telefonnr"/><LineBreak/><Run/></TextBlock>
-        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="1156,735,0,0" VerticalAlignment="Top" Width="189">
-            <ComboBoxItem>IT</ComboBoxItem>
-            <ComboBoxItem>HR</ComboBoxItem>
-            <ComboBoxItem>Ekonomi</ComboBoxItem>
-            <ComboBoxItem>Utveckling</ComboBoxItem>
-            <ComboBoxItem>Underhåll och lokalvård</ComboBoxItem>
-        </ComboBox>
-        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="1156,772,0,0" VerticalAlignment="Top" Width="189">
-            <ComboBoxItem>Backend 1 OSD</ComboBoxItem>
-            <ComboBoxItem>Frontend 1 OSD</ComboBoxItem>
-            <ComboBoxItem>Utvecklingsteam 33</ComboBoxItem>
-            <ComboBoxItem>Utvecklingsteam X</ComboBoxItem>
-            <ComboBoxItem>UX 1</ComboBoxItem>
-        </ComboBox>
+        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="1156,735,0,0" VerticalAlignment="Top" Width="189"/>
+        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="1156,772,0,0" VerticalAlignment="Top" Width="189"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="1084,736,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Avdelning"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="1084,772,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="67" Height="23" Text="Grupp"/>
         <Button x:Name="btnAddguest" Content="Lägg till kund" HorizontalAlignment="Left" Margin="1247,578,0,0" VerticalAlignment="Top" Width="75" Click="btnAddguest_Click"/>

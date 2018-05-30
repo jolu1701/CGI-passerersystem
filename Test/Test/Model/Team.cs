@@ -11,5 +11,10 @@ namespace Test.Model
         public int id { get; set; }
         public string teamName { get; set; }
 
+        public override string ToString()
+        {
+            return teamName;
+        }
+
     }
 }

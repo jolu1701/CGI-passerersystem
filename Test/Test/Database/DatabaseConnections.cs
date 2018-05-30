@@ -361,5 +361,64 @@ namespace Test.Database
 
             }
         }
+
+        public List<Department> GetAllDepartments()
+        {
+            Department d;
+            List<Department> departments = new List<Department>();
+
+            string stmt = "select * from department";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        d = new Department()
+                        {
+                            DepartmentID = reader.GetInt32(0),
+                            Name = reader.GetString(1)
+                        };                                            
+
+                        departments.Add(d); //Lägger till den hämtade avdelningen från databasen till listan i VS.
+                    }
+                }
+                return departments;
+            }
+        }
+
+        public List<Team> GetAllTeams()
+        {
+            Team t;
+            List<Team> teams = new List<Team>();
+
+            string stmt = "select * from team";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        t = new Team()
+                        {
+                            id = reader.GetInt32(0),
+                            teamName = reader.GetString(1)
+                        };
+
+                        teams.Add(t); //Lägger till den hämtade avdelningen från databasen till listan i VS.
+                    }
+                }
+                return teams;
+            }
+        }
+
     }
 }
