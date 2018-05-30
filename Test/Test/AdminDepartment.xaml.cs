@@ -33,7 +33,7 @@ namespace Test
             listBoxDepartment.ItemsSource = departments;       
         }
 
-               
+        Department selecteddepartment;
 
         private void btnAddDep_Click(object sender, RoutedEventArgs e)
         {
@@ -47,5 +47,37 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.RemoveDepartment(selecteddepartment);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void listBoxDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selecteddepartment = (Department)listBoxDepartment.SelectedItem;
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                db.EditDepartment(selecteddepartment, textBoxNewName.Text);
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
+
 }

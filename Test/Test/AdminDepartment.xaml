@@ -9,10 +9,11 @@
     <Grid>
         <TextBox x:Name="txtDepartment" HorizontalAlignment="Left" Height="24" Margin="82,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Text="namn på ny avdelning..."/>
         <Button x:Name="btnAddDep" Content="Lägg till avdelning" HorizontalAlignment="Left" Margin="116,54,0,0" VerticalAlignment="Top" Width="120" Click="btnAddDep_Click"/>
-        <ListBox x:Name="listBoxDepartment" HorizontalAlignment="Left" Height="247" Margin="21,124,0,0" VerticalAlignment="Top" Width="306"/>
+        <ListBox x:Name="listBoxDepartment" HorizontalAlignment="Left" Height="247" Margin="21,124,0,0" VerticalAlignment="Top" Width="306" SelectionChanged="listBoxDepartment_SelectionChanged"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="21,106,0,0" TextWrapping="Wrap" Text="Befintliga avdelningar" VerticalAlignment="Top" Width="149"/>
-        <Button x:Name="btnRemove" Content="Ta bort" HorizontalAlignment="Left" Margin="219,376,0,0" VerticalAlignment="Top" Width="108"/>
-        <Button x:Name="btnEdit" Content="Redigera" HorizontalAlignment="Left" Margin="21,376,0,0" VerticalAlignment="Top" Width="109"/>
+        <Button x:Name="btnRemove" Content="Ta bort" HorizontalAlignment="Left" Margin="219,376,0,0" VerticalAlignment="Top" Width="108" Click="btnRemove_Click"/>
+        <Button x:Name="btnEdit" Content="Redigera" HorizontalAlignment="Left" Margin="21,376,0,0" VerticalAlignment="Top" Width="109" Click="btnEdit_Click"/>
+        <TextBox x:Name="textBoxNewName" HorizontalAlignment="Left" Height="23" Margin="21,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="306"/>
 
     </Grid>
 </Window>
