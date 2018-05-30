@@ -518,5 +518,69 @@ namespace Test.Database
             }
         }
 
+        public void RemoveTeam(Team t)
+        {
+            string stmt = "DELETE from team where teamid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", t.id);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void EditTeam(Team t, string newname)
+        {
+            string stmt = "update team set teamname = @newname where teamid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", t.id);
+                    cmd.Parameters.AddWithValue("newname", newname);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void RemoveDepartment(Department d)
+        {
+            string stmt = "DELETE from department where departmentid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", d.DepartmentID);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void EditDepartment(Department d, string newname)
+        {
+            string stmt = "update department set departmentname = @newname where departmentid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("id", d.DepartmentID);
+                    cmd.Parameters.AddWithValue("newname", newname);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
     }
 }

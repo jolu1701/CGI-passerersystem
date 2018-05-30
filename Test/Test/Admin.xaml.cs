@@ -58,18 +58,7 @@ namespace Test
             }
         }
 
-        private void btnAddDep_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddDepartment(txtDepartment.Text);
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        
 
         private void btnDelEmp_Click(object sender, RoutedEventArgs e)
         {            
@@ -84,22 +73,10 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
 
-            //leftListBox.Items.Refresh();
-            //leftListBox.ItemsSource = employees;
+            dataGrid.Items.Refresh();
+            dataGrid.ItemsSource = employees;
         }
 
-        private void btnAddTeam_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                DatabaseConnections db = new DatabaseConnections();
-                db.AddTeam(txtTeam.Text);
-            }
-            catch (PostgresException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         public void UpdateComboBoxes()
         {
@@ -116,9 +93,21 @@ namespace Test
             }
         }
 
-        private void leftListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //choosenEmployee = (Employee)leftListBox.SelectedItem;
+            choosenEmployee = (Employee)dataGrid.SelectedItem;
+        }
+
+        private void btnAdminTeam_Click(object sender, RoutedEventArgs e)
+        {
+            AdminTeam at = new AdminTeam();
+            at.Show();
+        }
+
+        private void btnAdminDepartmen_Click(object sender, RoutedEventArgs e)
+        {
+            AdminDepartment ad = new AdminDepartment();
+            ad.Show();
         }
     }
 }
