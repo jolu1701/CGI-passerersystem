@@ -8,7 +8,7 @@
         Title="AddMeeting" Height="450" Width="800">
     <Grid>
 
-        <Frame Content="" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="215" Margin="51,82,0,0" Background="#FFDADADA" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="215" Margin="51,82,0,0" Background="#FFF0EBEB" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
 
         <Label Content="Kommentar" HorizontalAlignment="Left" Margin="70,222,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="70,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
