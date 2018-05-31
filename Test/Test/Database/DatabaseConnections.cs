@@ -49,7 +49,7 @@ namespace Test.Database
             }
         }
 
-        public void AddEmployee(string fn, string sn, string pn, string dep, string tm)
+        public void AddEmployee(string fn, string sn, string pn, string dep, int depid, string tm, int temid)
         {
             Employee e = new Employee();
             e.firstName = fn;
@@ -68,8 +68,8 @@ namespace Test.Database
                     cmd.Parameters.AddWithValue("firstname", fn); // Det här är för att "@"-grejen ovan ska funka. Det inom hartassar är det som man ropar på med snabel-a, det andra är den variabel som det ska vara lika med.
                     cmd.Parameters.AddWithValue("surname", sn);
                     cmd.Parameters.AddWithValue("phonenumber", pn);
-                    cmd.Parameters.AddWithValue("department", dep);
-                    cmd.Parameters.AddWithValue("team", tm);
+                    cmd.Parameters.AddWithValue("department", depid);
+                    cmd.Parameters.AddWithValue("team", temid);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -146,13 +146,15 @@ namespace Test.Database
             }
         }
 
-        public void AddMeeting(DateTime dt, string mh)
+        public void AddMeeting(DateTime dt, DateTime tm, Employee mh, String nt)
         {
             Meeting m = new Meeting();
             m.Date = dt;
-            m.MeetingHolder = mh;
+            m.Time = tm;
+            m.MeetingHolder = mh.ToString();
+            m.Note = nt;
 
-            string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
+            string stmt = "Insert into meeting(date, time, fk_meetingholder, note) Values(@dt,@tm,@mh,@nt)";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -160,7 +162,9 @@ namespace Test.Database
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
                     cmd.Parameters.AddWithValue("dt", dt);
-                    cmd.Parameters.AddWithValue("mh", mh);
+                    cmd.Parameters.AddWithValue("tm", tm);
+                    cmd.Parameters.AddWithValue("mh", mh.id);
+                    cmd.Parameters.AddWithValue("nt", nt);
                     cmd.ExecuteNonQuery();
                 }
 

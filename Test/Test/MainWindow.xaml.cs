@@ -41,8 +41,8 @@ namespace Test
             }
         }
 
+
         
-       
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -87,6 +87,12 @@ namespace Test
         {
             AdminMeetingHistory mh = new AdminMeetingHistory();
             this.Content = mh;
+        }
+
+        private void btnCreateaMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            AddMeeting am = new AddMeeting();
+            am.Show();
         }
     }
 }

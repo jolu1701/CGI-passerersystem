@@ -1,0 +1,22 @@
+﻿<Window x:Class="Test.AddMeeting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        mc:Ignorable="d"
+        Title="AddMeeting" Height="450" Width="800">
+    <Grid>
+
+        <Label Content="lblNote" HorizontalAlignment="Left" Margin="70,222,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="70,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        <Label Content="Datum" HorizontalAlignment="Left" Margin="70,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTime" Content="Tid" HorizontalAlignment="Left" Margin="70,161,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNote" HorizontalAlignment="Left" Height="23" Margin="70,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" Height="328" Margin="289,32,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="lstEmployees_SelectionChanged"/>
+        <Button x:Name="btnCreateMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="117,345,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateMeeting_Click"/>
+        <Label Content="Anställda" HorizontalAlignment="Left" Margin="353,6,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDate" HorizontalAlignment="Left" Height="23" Margin="70,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+
+    </Grid>
+</Window>
