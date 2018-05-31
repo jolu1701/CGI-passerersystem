@@ -146,11 +146,11 @@ namespace Test.Database
             }
         }
 
-        public void AddMeeting(DateTime dt, string mh)
+        public void AddMeeting(DateTime dt, int mh)
         {
             Meeting m = new Meeting();
             m.Date = dt;
-            m.MeetingHolder = mh;
+            m.MeetingHolder = mh.ToString();
 
             string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
 

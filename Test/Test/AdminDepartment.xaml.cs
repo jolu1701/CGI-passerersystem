@@ -41,6 +41,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.AddDepartment(txtDepartment.Text);
+                txtDepartment.Text = String.Empty;
+                btnAddDep.IsEnabled = false;
             }
             catch (PostgresException ex)
             {
@@ -64,10 +66,20 @@ namespace Test
         private void listBoxDepartment_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selecteddepartment = (Department)listBoxDepartment.SelectedItem;
+            btnEdit.IsEnabled = true;
+            btnRemove.IsEnabled = true;
+            textBoxNewName.IsEnabled = true;
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (textBoxNewName.Text == null || textBoxNewName.Text.Length < 2)
+            {
+                MessageBox.Show("Du måste ange ett nytt namn på avdelningen bestående av minst två bokstäver.");
+                textBoxNewName.Focus();
+            }
+
+
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
@@ -77,6 +89,11 @@ namespace Test
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtDepartment_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnAddDep.IsEnabled = true;            
         }
     }
 
