@@ -8,15 +8,18 @@
         Title="AddMeeting" Height="450" Width="800">
     <Grid>
 
+        <Frame Content="" HorizontalAlignment="Left" Height="248" VerticalAlignment="Top" Width="215" Margin="51,82,0,0" Background="#FFDADADA" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
+
         <Label Content="Kommentar" HorizontalAlignment="Left" Margin="70,222,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="70,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
         <Label Content="Datum YYYY-MM-DD" HorizontalAlignment="Left" Margin="70,92,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTime" Content="Tid HH:MM:SS" HorizontalAlignment="Left" Margin="70,161,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNote" HorizontalAlignment="Left" Height="23" Margin="70,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
         <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" Height="328" Margin="289,32,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="lstEmployees_SelectionChanged"/>
-        <Button x:Name="btnCreateMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="117,345,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateMeeting_Click"/>
-        <Label Content="Anställda" HorizontalAlignment="Left" Margin="353,6,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnCreateMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="119,292,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateMeeting_Click" Background="#FFBFB4B4" FontWeight="Bold"/>
+        <Label Content="Anställda" HorizontalAlignment="Left" Margin="487,1,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="txtDate" HorizontalAlignment="Left" Height="23" Margin="70,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        <Image HorizontalAlignment="Left" Height="75" VerticalAlignment="Top" Width="121" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,-17,0,0" />
 
     </Grid>
 </Window>
