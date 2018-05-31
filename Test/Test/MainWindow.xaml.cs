@@ -83,6 +83,11 @@ namespace Test
             this.Content = admin;
         }
 
+
+
+
+
+
         private void btnHistory_Click(object sender, RoutedEventArgs e)
         {
             AdminMeetingHistory mh = new AdminMeetingHistory();
