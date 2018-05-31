@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AdminMeetingHistory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminTeam.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +89,9 @@
     </Compile>
     <Compile Include="AdminDepartment.xaml.cs">
       <DependentUpon>AdminDepartment.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminMeetingHistory.xaml.cs">
+      <DependentUpon>AdminMeetingHistory.xaml</DependentUpon>
     </Compile>
     <Compile Include="AdminTeam.xaml.cs">
       <DependentUpon>AdminTeam.xaml</DependentUpon>
@@ -113,6 +120,7 @@
     <Compile Include="Model\GuestExtras.cs" />
     <Compile Include="Model\Meeting.cs" />
     <Compile Include="Model\MeetingGuest.cs" />
+    <Compile Include="Model\MeetingHistory.cs" />
     <Compile Include="Model\Team.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

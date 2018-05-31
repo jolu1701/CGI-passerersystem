@@ -14,7 +14,7 @@ namespace Test.Database
         public List<Employee> GetAllEmployees()
         {
             Employee e;
-            List<Employee> employees = new List<Employee>(); 
+            List<Employee> employees = new List<Employee>();
 
             string stmt = "select m.employeeid, m.firstname, m.surname, t.teamname, d.departmentname, m.phonenumber from employee m " +
                 "inner join team t on m.fk_teamid=t.teamid " +
@@ -28,14 +28,14 @@ namespace Test.Database
                 {
                     while (reader.Read())
                     {
-                                              
+
                         e = new Employee()
                         {
                             id = reader.GetInt32(0),
                             firstName = reader.GetString(1),
                             surName = reader.GetString(2),
                             team = reader.GetString(3),
-                            department = reader.GetString(4),                            
+                            department = reader.GetString(4),
                             phoneNumber = reader.GetString(5)
                         };
 
@@ -76,9 +76,9 @@ namespace Test.Database
             }
         }
 
-        
 
-        public int AddGuest(string fn, string sn, string co )
+
+        public int AddGuest(string fn, string sn, string co)
         {
             Guest g = new Guest();
             g.firstName = fn;
@@ -114,21 +114,21 @@ namespace Test.Database
 
                     object guestid = cmd.ExecuteScalar();
                     string gid = guestid.ToString();
-                    g.id = int.Parse(gid);                    
+                    g.id = int.Parse(gid);
                 }
-                
+
             }
 
             return g.id;
         }
 
-        public void AddMeetingGuest( int gid, int mid, string bg)
+        public void AddMeetingGuest(int gid, int mid, string bg)
         {
             MeetingGuest mg = new MeetingGuest();
             mg.Guestid = gid;
             mg.Meetingid = mid;
             mg.Badge = bg;
-            
+
 
             string stmt = "Insert into meeting_guest(fk_guestid, fk_meetingid, badge) Values(@guestid, @meetingid, @badge)";
 
@@ -243,11 +243,11 @@ namespace Test.Database
                             MeetingID = reader.GetInt32(0),
                             Date = reader.GetDateTime(1),
                             //Time = reader.GetDateTime(2),
-                            MeetingHolder = reader.GetString(2) + " " + reader.GetString(3),                           
+                            MeetingHolder = reader.GetString(2) + " " + reader.GetString(3),
                             //Note = reader.GetString(4)
-                        };                                              
+                        };
 
-                        meetings.Add(m); 
+                        meetings.Add(m);
                     }
                 }
                 return meetings;
@@ -319,7 +319,7 @@ namespace Test.Database
                             }
                             catch (Exception)
                             {
-                                
+
                             }
                             try
                             {
@@ -327,10 +327,10 @@ namespace Test.Database
                             }
                             catch (Exception)
                             {
-                                
+
                             }
                             ge.badge = reader.GetString(6);
-                            
+
 
                             meetingGuests.Add(ge);
                         }
@@ -339,7 +339,7 @@ namespace Test.Database
                 }
             }
         }
-        
+
 
         public void CheckOutGuest(GuestExtras g)
         {
@@ -387,7 +387,7 @@ namespace Test.Database
             {
                 conn.Open();
                 using (var cmd = new NpgsqlCommand(stmt, conn))
-                {                    
+                {
                     cmd.Parameters.AddWithValue("id", g.id);
                     cmd.ExecuteNonQuery();
                 }
@@ -414,7 +414,7 @@ namespace Test.Database
                         {
                             DepartmentID = reader.GetInt32(0),
                             Name = reader.GetString(1)
-                        };                                            
+                        };
 
                         departments.Add(d); //Lägger till den hämtade avdelningen från databasen till listan i VS.
                     }
@@ -476,8 +476,8 @@ namespace Test.Database
                             e.surName = reader.GetString(2);
                             e.phoneNumber = reader.GetString(3);
                             e.department = reader.GetString(4);
-                            e.team = reader.GetString(5);                         
-                            
+                            e.team = reader.GetString(5);
+
                             meetingEmployees.Add(e);
                         }
                     }
@@ -486,7 +486,7 @@ namespace Test.Database
             }
         }
 
-        public void AddEmployeeToMeeting(Employee e,Meeting m)
+        public void AddEmployeeToMeeting(Employee e, Meeting m)
         {
             string stmt = "Insert into meeting_attendees(fk_employeeid, fk_meetingid) Values(@employeeid, @meetingid)";
 
@@ -580,7 +580,81 @@ namespace Test.Database
             }
         }
 
+        public List<MeetingHistory> GetMeetingHistory()
+        {
+            MeetingHistory mh;
+            List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
 
+            string stmt = "select m.meetingid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,mg.badge " +
+                "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                "inner join department d on d.departmentid=e.fk_departmentid";
 
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        mh = new MeetingHistory()
+                        {
+                            Meetingholder = reader.GetString(5) + "" + reader.GetString(6),
+                            MeetingHolderID = reader.GetInt32(0),
+                            MhDepartment = reader.GetString(3),
+                            MhGuest = reader.GetString(1) + "" +reader.GetString(2),
+                            //Checkin=
+                            //Checkout
+                        };
+
+                        MeetingHist.Add(mh);
+                    }
+                }
+                return MeetingHist;
+            }
+
+        }
+
+        public List<MeetingHistory> MeetingHistFIlter(string depsearch, string mhname, string gname)
+        {
+            MeetingHistory mh;
+            List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
+            
+                string stmt = "select m.meetingid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,mg.badge " +
+                    "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                    "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                    "inner join department d on d.departmentid=e.fk_departmentid " +
+                    "where d.departmentname ilike '%"+depsearch+"%' AND (e.firstname ilike '%"+mhname+"%' OR e.surname ilike '%"+mhname+"%') AND (g.firstname ilike '%"+gname+"%' OR g.surname ilike '%"+gname+"%')";
+
+                using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+                {
+                    conn.Open();
+                    using (var cmd = new NpgsqlCommand(stmt, conn))
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+
+                            mh = new MeetingHistory()
+                            {
+                                Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
+                                MeetingHolderID = reader.GetInt32(0),
+                                MhDepartment = reader.GetString(3),
+                                MhGuest = reader.GetString(1) + " " + reader.GetString(2),
+                                //Checkin=
+                                //Checkout
+                            };
+
+                            MeetingHist.Add(mh);
+                        }
+                    }
+                }
+                return MeetingHist;
+            }
+        }
     }
-}
+
+
+    
