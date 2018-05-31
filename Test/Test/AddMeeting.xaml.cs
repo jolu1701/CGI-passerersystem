@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Test.Database;
 using Test.Model;
 
 namespace Test
@@ -23,10 +25,36 @@ namespace Test
         public AddMeeting()
         {
             InitializeComponent();
+            ShowMEmployees();
         }
 
         Employee selectedEmployee;
 
+        public void ShowMEmployees()
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                List<Employee> employees = db.GetAllEmployees();
+                lstEmployees.Items.Refresh();
+                lstEmployees.ItemsSource = employees;
+            }
 
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnCreateMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            DatabaseConnections db = new DatabaseConnections();
+            db.AddMeeting(DateTime.Parse(txtDate.Text), DateTime.Parse(txtTime.Text), selectedEmployee, txtNote.Text);
+        }
+
+        private void lstEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedEmployee = (Employee)lstEmployees.SelectedItem;
+        }
     }
 }

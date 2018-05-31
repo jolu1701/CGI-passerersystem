@@ -7,12 +7,16 @@
         mc:Ignorable="d"
         Title="AddMeeting" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtNote" HorizontalAlignment="Left" Height="24" Margin="93,332,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="txtDepartment_TextChanged"/>
-        <Label Content="lblNote" HorizontalAlignment="Left" Margin="93,306,0,0" VerticalAlignment="Top"/>
-        <Calendar HorizontalAlignment="Left" Margin="96,32,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="93,263,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Datum" HorizontalAlignment="Left" Margin="96,10,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTime" Content="Tid" HorizontalAlignment="Left" Margin="93,237,0,0" VerticalAlignment="Top"/>
+
+        <Label Content="lblNote" HorizontalAlignment="Left" Margin="70,222,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="70,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        <Label Content="Datum" HorizontalAlignment="Left" Margin="70,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTime" Content="Tid" HorizontalAlignment="Left" Margin="70,161,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNote" HorizontalAlignment="Left" Height="23" Margin="70,253,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" Height="328" Margin="289,32,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="lstEmployees_SelectionChanged"/>
+        <Button x:Name="btnCreateMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="117,345,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateMeeting_Click"/>
+        <Label Content="Anställda" HorizontalAlignment="Left" Margin="353,6,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDate" HorizontalAlignment="Left" Height="23" Margin="70,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
 
     </Grid>
 </Window>

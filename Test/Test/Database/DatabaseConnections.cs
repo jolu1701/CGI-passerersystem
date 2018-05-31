@@ -122,13 +122,13 @@ namespace Test.Database
             return g.id;
         }
 
-        public void AddMeetingGuest( int gid, int mid, string bg)
+        public void AddMeetingGuest(int gid, int mid, string bg)
         {
             MeetingGuest mg = new MeetingGuest();
             mg.Guestid = gid;
             mg.Meetingid = mid;
             mg.Badge = bg;
-            
+
 
             string stmt = "Insert into meeting_guest(fk_guestid, fk_meetingid, badge) Values(@guestid, @meetingid, @badge)";
 
@@ -146,13 +146,15 @@ namespace Test.Database
             }
         }
 
-        public void AddMeeting(DateTime dt, int mh)
+        public void AddMeeting(DateTime dt, DateTime tm, Employee mh, String nt)
         {
             Meeting m = new Meeting();
             m.Date = dt;
+            m.Time = tm;
             m.MeetingHolder = mh.ToString();
+            m.Note = nt;
 
-            string stmt = "Insert into meeting(datetime, fk_meetingholder) Values(@dt,@mh)";
+            string stmt = "Insert into meeting(date, time, fk_meetingholder, note) Values(@dt,@tm,@mh,@nt)";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -160,7 +162,9 @@ namespace Test.Database
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
                     cmd.Parameters.AddWithValue("dt", dt);
-                    cmd.Parameters.AddWithValue("mh", mh);
+                    cmd.Parameters.AddWithValue("tm", tm);
+                    cmd.Parameters.AddWithValue("mh", mh.id);
+                    cmd.Parameters.AddWithValue("nt", nt);
                     cmd.ExecuteNonQuery();
                 }
 
