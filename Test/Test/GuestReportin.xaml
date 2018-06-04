@@ -1,0 +1,22 @@
+﻿<Window x:Class="Test.GuestReportin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        mc:Ignorable="d"
+        Title="GuestReportin" Height="450" Width="800">
+    <Grid>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="535,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="535,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="535,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="535,119,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="535,163,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="535,205,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
+        <Button x:Name="btnAddGuestSelf" Content="Lägg till" HorizontalAlignment="Left" Margin="558,249,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuestSelf_Click"/>
+        <Label Content="Välj vilket möte du ska delat i" HorizontalAlignment="Left" Margin="80,39,0,0" VerticalAlignment="Top"/>
+        <Label Content="Skriv in dig" HorizontalAlignment="Left" Margin="570,53,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lstMeetings" HorizontalAlignment="Left" Height="224" Margin="20,86,0,0" VerticalAlignment="Top" Width="418"/>
+
+    </Grid>
+</Window>
