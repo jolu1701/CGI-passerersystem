@@ -5,11 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Test"
         mc:Ignorable="d"
-        Title="StartScreen" Height="900" Width="1400">
+        Title="StartScreen" Height="400" Width="600">
     <Grid>
-        <Button Name="btnToGuest" Content="Till gäst" HorizontalAlignment="Left" Margin="246,288,0,0" VerticalAlignment="Top" Width="76" Click="btnToGuest_Click"/>
-        <Button Name="btnToAdmin" Content="Till admin med lösen" HorizontalAlignment="Left" Margin="616,288,0,0" VerticalAlignment="Top" Width="171" Click="btnToAdmin_Click"/>
-        <Button Name="btnadminnologin" Content="Till admin utan lösen" HorizontalAlignment="Left" Margin="928,536,0,0" VerticalAlignment="Top" Width="225" Click="btnadminnologin_Click"/>
+        <Frame Content="" HorizontalAlignment="Left" Height="181" Margin="32,79,0,0" VerticalAlignment="Top" Width="522" Background="#FFE2E2E2" BorderBrush="#FF494949" BorderThickness="1"/>
+
+        <Button x:Name="btnToGuest" Content="Till gäst" HorizontalAlignment="Left" Margin="76,160,0,0" VerticalAlignment="Top" Width="88" Click="btnToGuest_Click" Height="41" BorderBrush="#FF3C3C3C" Background="#FFBFBFBF" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="btnToAdmin" Content="Till admin" HorizontalAlignment="Left" Margin="400,160,0,0" VerticalAlignment="Top" Width="104" Click="btnToAdmin_Click" Height="41" BorderBrush="#FF3C3C3C" Background="#FFBFBFBF" FontWeight="Bold" FontSize="14"/>
+        <Button x:Name="btnadminnologin" Content="Till admin utan lösen" HorizontalAlignment="Left" Margin="413,333,0,0" VerticalAlignment="Top" Width="169" Click="btnadminnologin_Click" Height="26"/>
+        <Label Content="Välkommen" HorizontalAlignment="Left" Margin="234,79,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="133" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,-21,0,0"/>
+        <Button Content="Till besöksmottagare" HorizontalAlignment="Left" Margin="204,160,0,0" VerticalAlignment="Top" Width="158" Height="41" BorderBrush="#FF3C3C3C" Background="#FFBFBFBF" FontWeight="Bold" FontSize="14"/>
+        <Label Content="Ej påbörjad" HorizontalAlignment="Left" Margin="249,134,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
