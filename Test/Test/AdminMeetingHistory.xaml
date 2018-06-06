@@ -21,6 +21,9 @@
             <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="235,39,0,0" VerticalAlignment="Top" Width="145"/>
             <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="43" Margin="436,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
             <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="436,39,0,0" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Visa" HorizontalAlignment="Left" Margin="38,128,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="drpRows" HorizontalAlignment="Left" Margin="75,132,0,0" VerticalAlignment="Top" Width="29"/>
+            <Label Content="rader" HorizontalAlignment="Left" Margin="109,128,0,0" VerticalAlignment="Top"/>
         </Grid>
 
     </Grid>

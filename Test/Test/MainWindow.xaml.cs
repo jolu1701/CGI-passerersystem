@@ -100,5 +100,12 @@ namespace Test
             GuestReportin guestreportin = new GuestReportin();
             guestreportin.Show();
         }
+
+        private void btnTologin_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+
+        }
     }
 }
