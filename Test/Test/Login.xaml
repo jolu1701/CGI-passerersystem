@@ -14,7 +14,7 @@
             <TextBox Name="txtUserName" Background="White" FontSize="18"></TextBox>
             <Label Content="Lösenord" Foreground="Black" FontSize="18"></Label>
             <TextBox Name="txtPassword" Background="White" FontSize="18"></TextBox>
-            <Button x:Name="btnLogin" FontSize="18" Content="Logga in" Width="100" Margin="110,0" Height="30" Click="btnLogin_Click"/>
+            <Button x:Name="btnLogin" FontSize="18" Content="Logga in" Width="100" Margin="110,20" Height="30" Click="btnLogin_Click"/>
         </StackPanel>
         
     </Border>

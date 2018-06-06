@@ -34,6 +34,7 @@ namespace Test
         {
             GuestReportin guestreportin = new GuestReportin();
             guestreportin.Show();
+            this.Close();
         }
 
         private void btnadminnologin_Click(object sender, RoutedEventArgs e)

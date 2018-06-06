@@ -7,16 +7,18 @@
         mc:Ignorable="d"
         Title="GuestReportin" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="535,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="535,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="535,221,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="535,119,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
-        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="535,163,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="535,205,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
-        <Button x:Name="btnAddGuestSelf" Content="Lägg till" HorizontalAlignment="Left" Margin="558,249,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuestSelf_Click"/>
-        <Label Content="Välj vilket möte du ska delat i" HorizontalAlignment="Left" Margin="80,39,0,0" VerticalAlignment="Top"/>
-        <Label Content="Skriv in dig" HorizontalAlignment="Left" Margin="570,53,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstMeetings" HorizontalAlignment="Left" Height="224" Margin="20,86,0,0" VerticalAlignment="Top" Width="418"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="23" Margin="523,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="23" Margin="523,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtCompany" HorizontalAlignment="Left" Height="23" Margin="523,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="523,125,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="523,169,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="523,211,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59"/>
+        <Button x:Name="btnAddGuestSelf" Content="Lägg till" HorizontalAlignment="Left" Margin="546,255,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuestSelf_Click"/>
+        <Label Content="Välj vilket möte du ska delat i" HorizontalAlignment="Left" Margin="112,82,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Skriv in dig" HorizontalAlignment="Left" Margin="546,85,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <ListBox x:Name="lstMeetings" HorizontalAlignment="Left" Height="224" Margin="21,116,0,0" VerticalAlignment="Top" Width="418"/>
+        <Image HorizontalAlignment="Left" Height="95" VerticalAlignment="Top" Width="147" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="0,-26,0,0" />
+        <Label x:Name="lblGuest" Content="Gäst" HorizontalAlignment="Left" Margin="21,32,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="55"/>
 
     </Grid>
 </Window>
