@@ -44,12 +44,18 @@ namespace Test
 
                 }
                 else
-                    MessageBox.Show("Fel");
+                    MessageBox.Show("Fel användarnamn eller lösenord");
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnChangepw_Click(object sender, RoutedEventArgs e)
+        {
+            Changepassword changepassword = new Changepassword();
+            changepassword.Show();
         }
     }
 }

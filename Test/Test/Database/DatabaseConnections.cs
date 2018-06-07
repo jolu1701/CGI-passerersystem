@@ -252,6 +252,23 @@ namespace Test.Database
             }
         }
 
+        public void ChangePassword(string username, string password, string newpassword)
+        {
+            string stmt = "update login set password = @newpassword where username = @username AND password = @password";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@newpassword", newpassword);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public List<Meeting> GetAllMeetings()
         {
             Meeting m;
