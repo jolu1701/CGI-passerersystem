@@ -26,6 +26,14 @@ namespace Test
             InitializeComponent();
         }
 
+        public void Update()
+        {
+            txtUserName.Clear();
+            txtPassword.Clear();
+            txtNewpassword.Clear();
+            MessageBox.Show("Lösenordet är ändrat");
+            this.Close();
+        }
         
 
         private void btnChangepassword_Click(object sender, RoutedEventArgs e)
@@ -34,6 +42,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.ChangePassword(txtUserName.Text, txtPassword.Text, txtNewpassword.Text);
+                //Update();
             }
 
             catch (PostgresException ex)
