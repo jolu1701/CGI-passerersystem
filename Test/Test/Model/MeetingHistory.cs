@@ -9,10 +9,10 @@ namespace Test.Model
     class MeetingHistory
     {
         public string Meetingholder { get; set; }
-        public int MeetingHolderID { get; set; }
+        public string MeetingHolderID { get; set; }
         public string MhDepartment { get; set; }
         public string MhGuest { get; set; }
-        public string GuestAmount { get; set; }
+        public string MhGuestCo { get; set; }
         public DateTime Checkin { get; set; }
         public DateTime Checkout { get; set; }
          

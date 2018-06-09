@@ -24,6 +24,7 @@ namespace Test
     /// </summary>
     public partial class AdminMeetingHistory : Page
     {
+
         public AdminMeetingHistory()
         {
             InitializeComponent();
@@ -31,11 +32,15 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 dataGridMh.ItemsSource = db.GetMeetingHistory();
+                
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            //dataGridMh.Columns[0].Header="Besöksmottagare";
+            //dataGridMh.Columns[1].Header="Anställningsnummer";
+            //dataGridMh.Columns[3].Header = "Avdelning";
         }
 
    
@@ -44,13 +49,13 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                dataGridMh.ItemsSource = db.MeetingHistFIlter(txtBoxDepartment.Text,txtBoxMeetingholder.Text,txtBoxGuest.Text);
+                dataGridMh.ItemsSource = db.MeetingHistFIlter(txtBoxDepartment.Text,txtBoxMeetingholder.Text,txtBoxGuest.Text, txtBoxGuestCo.Text, txtBoxGhID.Text);
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
+           
         }
 
     }
