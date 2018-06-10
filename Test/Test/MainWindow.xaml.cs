@@ -94,5 +94,18 @@ namespace Test
             AddMeeting am = new AddMeeting();
             am.Show();
         }
+
+        private void btnGuestReport_Click(object sender, RoutedEventArgs e)
+        {
+            GuestReportin guestreportin = new GuestReportin();
+            guestreportin.Show();
+        }
+
+        private void btnTologin_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+
+        }
     }
 }

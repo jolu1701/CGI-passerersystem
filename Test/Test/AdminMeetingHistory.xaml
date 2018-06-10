@@ -15,16 +15,16 @@
                 <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
             <DataGrid x:Name="dataGridMh" HorizontalAlignment="Left" Margin="38,154,0,0" VerticalAlignment="Top" Height="689" Width="1323" Grid.RowSpan="2"/>
-            <TextBox x:Name="txtBoxDepartment" HorizontalAlignment="Left" Height="43" Margin="404,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Avdelning" HorizontalAlignment="Left" Height="32" Margin="404,55,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxMeetingholder" HorizontalAlignment="Left" Height="43" Margin="217,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="217,55,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="43" Margin="601,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="601,55,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxGuestCo" HorizontalAlignment="Left" Height="43" Margin="806,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Företag" HorizontalAlignment="Left" Height="32" Margin="806,55,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxGhID" HorizontalAlignment="Left" Height="43" Margin="38,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Anställningsnummer" HorizontalAlignment="Left" Height="32" Margin="38,55,0,0" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="txtBoxDepartment" HorizontalAlignment="Left" Height="43" Margin="224,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Avdelning" HorizontalAlignment="Left" Height="32" Margin="224,45,0,0" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="txtBoxMeetingholder" HorizontalAlignment="Left" Height="43" Margin="421,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="421,45,0,0" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="43" Margin="622,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="622,45,0,0" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Visa" HorizontalAlignment="Left" Margin="1216,102,0,0" VerticalAlignment="Top"/>
+            <ComboBox x:Name="drpRows" HorizontalAlignment="Left" Margin="1253,106,0,0" VerticalAlignment="Top" Width="29"/>
+            <Label Content="rader" HorizontalAlignment="Left" Margin="1287,102,0,0" VerticalAlignment="Top"/>
+            <Image HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="130" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality"/>
         </Grid>
 
     </Grid>
