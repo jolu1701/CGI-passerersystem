@@ -33,7 +33,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                dataGrid.ItemsSource = db.GetAllMeetings();                
+                dataGrid.ItemsSource = db.GetTodaysMeetings();                
             }
             catch (PostgresException ex)
             {
@@ -106,6 +106,57 @@ namespace Test
             Login login = new Login();
             login.Show();
 
+        }
+
+        private void btnViewAllMeetings_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetAllMeetings();
+                btnViewAllMeetings.IsEnabled = false;
+                btnViewTodaysMeetings.IsEnabled = true;
+                btnViewUpcomingMeetings.IsEnabled = true;
+                lblMeeting.Content = "Alla möten";
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnViewTodaysMeetings_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetTodaysMeetings();
+                btnViewAllMeetings.IsEnabled = true;
+                btnViewTodaysMeetings.IsEnabled = false;
+                btnViewUpcomingMeetings.IsEnabled = true;
+                lblMeeting.Content = "Dagens möten";
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnViewUpcomingMeetings_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                DatabaseConnections db = new DatabaseConnections();
+                dataGrid.ItemsSource = db.GetUpcomingMeetings();
+                btnViewAllMeetings.IsEnabled = true;
+                btnViewTodaysMeetings.IsEnabled = true;
+                btnViewUpcomingMeetings.IsEnabled = false;
+                lblMeeting.Content = "Kommande möten";
+            }
+            catch (PostgresException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

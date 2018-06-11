@@ -149,8 +149,7 @@ namespace Test.Database
         public void AddMeeting(DateTime dt, DateTime tm, Employee mh, String nt)
         {
             Meeting m = new Meeting();
-            m.Date = dt;
-            m.Time = tm;
+            m.DateAndTime = dt.ToString("D") + tm.ToString("hh:mm");
             m.MeetingHolder = mh.ToString();
             m.Note = nt;
 
@@ -274,7 +273,7 @@ namespace Test.Database
             Meeting m;
             List<Meeting> meetings = new List<Meeting>();
 
-            string stmt = "select me.meetingid,me.date,em.firstname,em.surname from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
+            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -284,15 +283,88 @@ namespace Test.Database
                 {
                     while (reader.Read())
                     {
+                        DateTime Date = reader.GetDateTime(1);
+                        string Time = reader.GetString(2);
+                        Time = Time.Remove(Time.Length - 3);
 
                         m = new Meeting()
                         {
                             MeetingID = reader.GetInt32(0),
-                            Date = reader.GetDateTime(1),
-                            //Time = reader.GetDateTime(2),
-                            MeetingHolder = reader.GetString(2) + " " + reader.GetString(3),
-                            //Note = reader.GetString(4)
+                            MeetingHolder = reader.GetString(3) + " " + reader.GetString(4),
+                            Note = reader.GetString(5)
                         };
+
+                        m.DateAndTime = Date.ToString("D") + " " + Time;
+
+                        meetings.Add(m);
+                    }
+                }
+                return meetings;
+            }
+        }
+
+        public List<Meeting> GetTodaysMeetings()
+        {
+            Meeting m;
+            List<Meeting> meetings = new List<Meeting>();
+
+            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date = current_date";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DateTime Date = reader.GetDateTime(1);
+                        string Time = reader.GetString(2);
+                        Time = Time.Remove(Time.Length - 3);
+
+                        m = new Meeting()
+                        {
+                            MeetingID = reader.GetInt32(0),
+                            MeetingHolder = reader.GetString(3) + " " + reader.GetString(4),
+                            Note = reader.GetString(5)
+                        };
+
+                        m.DateAndTime = Date.ToString("D") + " " + Time;
+
+                        meetings.Add(m);
+                    }
+                }
+                return meetings;
+            }
+        }
+
+        public List<Meeting> GetUpcomingMeetings()
+        {
+            Meeting m;
+            List<Meeting> meetings = new List<Meeting>();
+
+            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date >= current_date";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DateTime Date = reader.GetDateTime(1);
+                        string Time = reader.GetString(2);
+                        Time = Time.Remove(Time.Length - 3);
+
+                        m = new Meeting()
+                        {
+                            MeetingID = reader.GetInt32(0),
+                            MeetingHolder = reader.GetString(3) + " " + reader.GetString(4),
+                            Note = reader.GetString(5)
+                        };
+
+                        m.DateAndTime = Date.ToString("D") + " " + Time;
 
                         meetings.Add(m);
                     }

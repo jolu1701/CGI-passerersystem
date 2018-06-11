@@ -10,13 +10,15 @@
         <Frame Content="" HorizontalAlignment="Left" Height="661" VerticalAlignment="Top" Width="1301" Margin="46,100,0,0" Background="#FFE8E8E8" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
         <Image HorizontalAlignment="Left" Height="101" Margin="31,-33,0,0" VerticalAlignment="Top" Width="140" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
         <Button x:Name="btnAdmin" Content="Administration" HorizontalAlignment="Left" Margin="1122,28,0,0" VerticalAlignment="Top" Width="115" Height="40" FontSize="14" Click="btnAdmin_Click" FontWeight="Bold" />
-        <Label x:Name="lblDailymeeting" Content="Dagens möten" HorizontalAlignment="Left" Margin="637,98,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="99,135,0,0" VerticalAlignment="Top" Height="523" Width="1202" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8"/>
+        <Label x:Name="lblMeeting" Content="Dagens möten" HorizontalAlignment="Left" Margin="637,98,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="91,135,0,0" VerticalAlignment="Top" Height="523" Width="1202" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8" IsReadOnly="True"/>
         <Button x:Name="btnHistory" Content="Möteshistorik" HorizontalAlignment="Left" Margin="1000,28,0,0" VerticalAlignment="Top" Width="102" Click="btnHistory_Click" Height="40" FontSize="14" FontWeight="Bold"/>
         <Button x:Name="btnCreateaMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="120,686,0,0" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="btnCreateaMeeting_Click" FontWeight="Bold" Background="{x:Null}" />
-        <Button x:Name="btnViewAllMeetings" Content="Se alla möten" HorizontalAlignment="Left" Margin="1122,686,0,0" VerticalAlignment="Top" Width="111" Height="40" FontSize="14" FontWeight="Bold"/>
+        <Button x:Name="btnViewAllMeetings" Content="Se alla möten" HorizontalAlignment="Left" Margin="1190,686,0,0" VerticalAlignment="Top" Width="111" Height="40" FontSize="14" FontWeight="Bold" Click="btnViewAllMeetings_Click"/>
         <Label x:Name="lblAdmin" Content="Admin" HorizontalAlignment="Left" Margin="70,63,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="78"/>
         <Button x:Name="btnGuestReport" Content="Gästanmälan" HorizontalAlignment="Left" Margin="47,839,0,0" VerticalAlignment="Top" Width="75" Click="btnGuestReport_Click"/>
         <Button x:Name="btnTologin" Content="login" HorizontalAlignment="Left" Margin="10,839,0,0" VerticalAlignment="Top" Width="32" Click="btnTologin_Click"/>
+        <Button x:Name="btnViewUpcomingMeetings" Content="Se kommande möten" HorizontalAlignment="Left" Margin="1032,686,0,0" VerticalAlignment="Top" Width="153" Height="40" FontSize="14" FontWeight="Bold" Click="btnViewUpcomingMeetings_Click"/>
+        <Button x:Name="btnViewTodaysMeetings" Content="Se dagens möten" HorizontalAlignment="Left" Margin="902,686,0,0" VerticalAlignment="Top" Width="125" Height="40" FontSize="14" FontWeight="Bold" IsEnabled="False" Click="btnViewTodaysMeetings_Click"/>
     </Grid>
 </Window>

@@ -28,7 +28,7 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                lstMeetings.ItemsSource = db.GetAllMeetings(); 
+                lstMeetings.ItemsSource = db.GetTodaysMeetings(); 
             }
             catch (PostgresException ex)
             {
