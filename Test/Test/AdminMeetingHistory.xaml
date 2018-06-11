@@ -9,22 +9,39 @@
       Title="AdminMeetingHistory">
 
     <Grid>
-        <Grid Background="White" Margin="0,0,-600,-450.4">
+        <Grid Background="White" Margin="12,-45,-612,-373.4">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
-            <DataGrid x:Name="dataGridMh" HorizontalAlignment="Left" Margin="38,154,0,0" VerticalAlignment="Top" Height="689" Width="1323" Grid.RowSpan="2"/>
             <TextBox x:Name="txtBoxDepartment" HorizontalAlignment="Left" Height="43" Margin="224,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
             <Label Content="Avdelning" HorizontalAlignment="Left" Height="32" Margin="224,45,0,0" VerticalAlignment="Top" Width="145"/>
             <TextBox x:Name="txtBoxMeetingholder" HorizontalAlignment="Left" Height="43" Margin="421,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
             <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="421,45,0,0" VerticalAlignment="Top" Width="145"/>
             <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="43" Margin="622,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
             <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="622,45,0,0" VerticalAlignment="Top" Width="145"/>
-            <Label Content="Visa" HorizontalAlignment="Left" Margin="1216,102,0,0" VerticalAlignment="Top"/>
-            <ComboBox x:Name="drpRows" HorizontalAlignment="Left" Margin="1253,106,0,0" VerticalAlignment="Top" Width="29"/>
-            <Label Content="rader" HorizontalAlignment="Left" Margin="1287,102,0,0" VerticalAlignment="Top"/>
             <Image HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="130" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+            <TextBox x:Name="txtBoxGuestCo" HorizontalAlignment="Left" Height="43" Margin="796,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <TextBox x:Name="txtBoxGhID" HorizontalAlignment="Left" Height="43" Margin="977,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Button x:Name="btnFirst" Content="&lt;&lt;"  HorizontalAlignment="Left" Margin="231,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnFirst_Click" Grid.Row="1"/>
+            <Button x:Name="btnPrev" Content="&lt;"  HorizontalAlignment="Left" Margin="350,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnPrev_Click" Grid.Row="1"/>
+            <Button x:Name="btnNext" Content="&gt;"  HorizontalAlignment="Left" Margin="803,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnNext_Click" Grid.Row="1"/>
+            <Button x:Name="btnLast" Content="&gt;&gt;"  HorizontalAlignment="Left" Margin="935,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnLast_Click" Grid.Row="1"/>
+            <ComboBox x:Name="comboNumRows" HorizontalAlignment="Left" Margin="576,303.8,0,0" VerticalAlignment="Top" Width="169" Grid.Row="1" Height="34" SelectedIndex="0" SelectionChanged="comboNumRows_SelectionChanged"/>
+            <Label x:Name="lblNumberOf" Content="" HorizontalAlignment="Left" Margin="457,311.8,0,0" VerticalAlignment="Top" Grid.Row="1" Width="114"/>
+            <ListView x:Name="lstMH" HorizontalAlignment="Left" Height="443" Margin="52,146,0,0" VerticalAlignment="Top" Width="1273" Grid.RowSpan="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Avdelning" DisplayMemberBinding="{Binding MhDepartment}"/>
+                        <GridViewColumn Header="AnställningsID" DisplayMemberBinding="{Binding MeetingHolderID}"/>
+                        <GridViewColumn Header="Möteshållare" DisplayMemberBinding="{Binding Meetingholder}"/>
+                        <GridViewColumn Header="Besökare" DisplayMemberBinding="{Binding MhGuest}"/>
+                        <GridViewColumn Header="Företag" DisplayMemberBinding="{Binding MhGuestCo}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label Content="Företag" HorizontalAlignment="Left" Height="32" Margin="796,45,0,0" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Anställningsnummer" HorizontalAlignment="Left" Height="32" Margin="977,45,0,0" VerticalAlignment="Top" Width="145"/>
         </Grid>
 
     </Grid>

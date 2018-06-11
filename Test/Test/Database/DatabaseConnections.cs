@@ -627,7 +627,66 @@ namespace Test.Database
             }
         }
 
-        public List<MeetingHistory> GetMeetingHistory()
+        public int PageAmt(int i)
+        {
+            int amt = 0;
+            int rest = 0;
+
+            string stmt = "select count(*) from meeting_guest";
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        amt = reader.GetInt32(0);
+                    };
+                }
+            }
+            rest = amt % i;
+            amt = amt / i;
+            if (rest > 0)
+            {
+                amt++;
+            }
+            return amt;
+        }
+
+        public int PageAmtFIlter(int i, string depsearch, string mhname, string gname, string guestco, string mhid)
+        {
+            int amt = 0;
+            int rest = 0;
+
+            string stmt = "select count(*) from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                "inner join department d on d.departmentid=e.fk_departmentid " +
+                "where d.departmentname ilike '%" + depsearch + "%' AND (e.firstname ilike '%" + mhname + "%' OR e.surname ilike '%" + mhname + "%') AND (g.firstname ilike '%" + gname + "%' OR g.surname ilike '%" + gname + "%') AND g.company ilike '%" + guestco + "%' AND e.employeeid::text like '" + mhid + "%' ";
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+
+                    while (reader.Read())
+                    {
+                        amt = reader.GetInt32(0);
+                    };
+                }
+            }
+            rest = amt % i;
+            amt = amt / i;
+            if (rest > 0)
+            {
+                amt++;
+            }
+            return amt;
+        }
+
+        public List<MeetingHistory> GetMeetingHistory(string s)
         {
             MeetingHistory mh;
             List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
@@ -635,7 +694,7 @@ namespace Test.Database
             string stmt = "select e.employeeid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,g.company,mg.badge " +
                 "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
                 "inner join employee e on m.fk_meetingholder = e.employeeid " +
-                "inner join department d on d.departmentid=e.fk_departmentid";
+                "inner join department d on d.departmentid=e.fk_departmentid order by e.employeeid limit " + s + "";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -648,11 +707,54 @@ namespace Test.Database
 
                         mh = new MeetingHistory()
                         {
-                            Meetingholder = reader.GetString(5) + "" + reader.GetString(6),
+                            Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
                             MeetingHolderID = reader.GetString(0),
-                            MhGuestCo=reader.GetString(9),
+                            MhGuestCo = reader.GetString(9),
                             MhDepartment = reader.GetString(3),
-                            MhGuest = reader.GetString(1) + "" +reader.GetString(2),
+                            MhGuest = reader.GetString(1) + " " + reader.GetString(2),
+                            //Checkin=
+                            //Checkout
+
+                        };
+
+                        MeetingHist.Add(mh);
+
+
+                    }
+                }
+                return MeetingHist;
+            }
+
+        }
+
+        public List<MeetingHistory> MeetingHistFIlter(string depsearch, string mhname, string gname, string guestco, string mhid, string i)
+        {
+            MeetingHistory mh;
+            List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
+
+            string stmt = "select e.employeeid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,mg.badge, g.company " +
+                "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                "inner join department d on d.departmentid=e.fk_departmentid " +
+                "where d.departmentname ilike '%" + depsearch + "%' AND (e.firstname ilike '%" + mhname + "%' OR e.surname ilike '%" + mhname + "%') AND (g.firstname ilike '%" + gname + "%' OR g.surname ilike '%" + gname + "%') AND g.company ilike '%" + guestco + "%' AND e.employeeid::text like '" + mhid + "%' order by e.employeeid limit " + i + "";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        mh = new MeetingHistory()
+                        {
+                            Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
+                            MeetingHolderID = reader.GetString(0),
+                            MhGuestCo = reader.GetString(10),
+                            MhDepartment = reader.GetString(3),
+                            MhGuest = reader.GetString(1) + " " + reader.GetString(2),
+
                             //Checkin=
                             //Checkout
                         };
@@ -660,50 +762,94 @@ namespace Test.Database
                         MeetingHist.Add(mh);
                     }
                 }
-                return MeetingHist;
             }
-
+            return MeetingHist;
         }
-
-        public List<MeetingHistory> MeetingHistFIlter(string depsearch, string mhname, string gname, string guestco, string mhid)
+        public List<MeetingHistory> GetMeetingHistoryNext(string s, string st,string str)
         {
             MeetingHistory mh;
             List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
-            
-                string stmt = "select e.employeeid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,mg.badge, g.company " +
-                    "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
-                    "inner join employee e on m.fk_meetingholder = e.employeeid " +
-                    "inner join department d on d.departmentid=e.fk_departmentid " +
-                    "where d.departmentname ilike '%"+depsearch+"%' AND (e.firstname ilike '%"+mhname+"%' OR e.surname ilike '%"+mhname+"%') AND (g.firstname ilike '%"+gname+"%' OR g.surname ilike '%"+gname+"%') AND g.company ilike '%"+guestco+"%' AND e.employeeid::text like '"+mhid+"%'";
 
-                using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            string stmt = "select e.employeeid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,g.company,mg.badge " +
+                "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                "inner join department d on d.departmentid=e.fk_departmentid order by e.employeeid OFFSET ((" + st + ""+str+")*" + s + ") ROWS FETCH NEXT " + s + " ROWS ONLY ";
+                 
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
                 {
-                    conn.Open();
-                    using (var cmd = new NpgsqlCommand(stmt, conn))
-                    using (var reader = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+
+                        mh = new MeetingHistory()
                         {
+                            Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
+                            MeetingHolderID = reader.GetString(0),
+                            MhGuestCo = reader.GetString(9),
+                            MhDepartment = reader.GetString(3),
+                            MhGuest = reader.GetString(1) + " " + reader.GetString(2),
+                            //Checkin=
+                            //Checkout
 
-                            mh = new MeetingHistory()
-                            {
-                                Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
-                                MeetingHolderID = reader.GetString(0),
-                                MhGuestCo=reader.GetString(10),
-                                MhDepartment = reader.GetString(3),
-                                MhGuest = reader.GetString(1) + " " + reader.GetString(2),
-                                //Checkin=
-                                //Checkout
-                            };
+                        };
 
-                            MeetingHist.Add(mh);
-                        }
+                        MeetingHist.Add(mh);
+
+
                     }
                 }
                 return MeetingHist;
             }
+
         }
+        
+        
+        public List<MeetingHistory> MeetingHistBrowseFIlter(string s, string st,string depsearch, string mhname, string gname, string guestco, string mhid,string str)
+        {
+            MeetingHistory mh;
+            List<MeetingHistory> MeetingHist = new List<MeetingHistory>();
+
+            string stmt = "select e.employeeid,g.firstname,g.surname,d.departmentname,m.date,e.firstname,e.surname,mg.checkin,mg.checkout,mg.badge, g.company " +
+                "from meeting_guest mg inner join guest g on g.guestid = mg.fk_guestid inner join meeting m on mg.fk_meetingid = m.meetingid " +
+                "inner join employee e on m.fk_meetingholder = e.employeeid " +
+                "inner join department d on d.departmentid=e.fk_departmentid " +
+                "where d.departmentname ilike '%" + depsearch + "%' AND (e.firstname ilike '%" + mhname + "%' OR e.surname ilike '%" + mhname + "%') AND (g.firstname ilike '%" + gname + "%' OR g.surname ilike '%" + gname + "%') AND g.company ilike '%" + guestco + "%' AND e.employeeid::text like '" + mhid + "%' "+
+                "order by e.employeeid OFFSET ((" + st + ""+str+")*" + s + ") ROWS FETCH NEXT " + s + " ROWS ONLY ";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        mh = new MeetingHistory()
+                        {
+                            Meetingholder = reader.GetString(5) + " " + reader.GetString(6),
+                            MeetingHolderID = reader.GetString(0),
+                            MhGuestCo = reader.GetString(10),
+                            MhDepartment = reader.GetString(3),
+                            MhGuest = reader.GetString(1) + " " + reader.GetString(2),
+
+                            //Checkin=
+                            //Checkout
+                        };
+
+                        MeetingHist.Add(mh);
+                    }
+                }
+            }
+            return MeetingHist;
+        }
+
     }
+}
 
 
     
