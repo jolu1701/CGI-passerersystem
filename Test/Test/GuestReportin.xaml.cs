@@ -53,6 +53,10 @@ namespace Test
                     DatabaseConnections db = new DatabaseConnections();
                     int guestid = db.AddGuest(txtFirstName.Text, txtSurName.Text, txtCompany.Text);
                     db.AddMeetingGuest(guestid, selMeet.MeetingID, " ");
+                    MessageBox.Show("Välkommen " + txtFirstName.Text + "!\rTa gärna en kopp kaffe och slå dig ned så kommer " + selMeet.MeetingHolder + " och hämtar dig inom kort.");
+                    txtFirstName.Text = string.Empty;
+                    txtSurName.Text = string.Empty;
+                    txtCompany.Text = string.Empty;
                 }
                 catch (PostgresException ex)
                 {

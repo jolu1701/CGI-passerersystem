@@ -28,6 +28,7 @@ namespace Test
         {
             Login login = new Login();
             login.Show();
+            this.Close();
         }
 
         private void btnToGuest_Click(object sender, RoutedEventArgs e)
@@ -41,6 +42,7 @@ namespace Test
         {
             MainWindow mainwindow = new MainWindow();
             mainwindow.Show();
+            this.Close();
         }
     }
 }

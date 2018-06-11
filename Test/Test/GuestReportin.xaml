@@ -15,7 +15,7 @@
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="523,146,0,0" TextWrapping="Wrap" Text="Förnamn" VerticalAlignment="Top" Width="52" FontSize="13"/>
         <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="523,190,0,0" TextWrapping="Wrap" Text="Efternamn" VerticalAlignment="Top" Width="59" FontSize="13"/>
         <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="523,232,0,0" TextWrapping="Wrap" Text="Företag" VerticalAlignment="Top" Width="59" FontSize="13"/>
-        <Button x:Name="btnAddGuestSelf" Content="Lägg till" HorizontalAlignment="Left" Margin="546,276,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuestSelf_Click"/>
+        <Button x:Name="btnAddGuestSelf" Content="Ok" HorizontalAlignment="Left" Margin="572,276,0,0" VerticalAlignment="Top" Width="75" Click="btnAddGuestSelf_Click"/>
         <Label Content="Välj vilket möte du ska delta i" HorizontalAlignment="Left" Margin="139,82,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="Skriv in dig" HorizontalAlignment="Left" Margin="569,82,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ListBox x:Name="lstMeetings" HorizontalAlignment="Left" Height="224" Margin="21,116,0,0" VerticalAlignment="Top" Width="467"/>
