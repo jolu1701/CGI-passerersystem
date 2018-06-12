@@ -4,32 +4,31 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Test"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="AdminMeetingHistory">
+      mc:Ignorable="d"
+      Title="AdminMeetingHistory" Height="850" Width="1379">
 
     <Grid>
-        <Grid Background="White" Margin="12,-45,-612,-373.4">
+        <Grid Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="7*"/>
                 <RowDefinition Height="13*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="txtBoxDepartment" HorizontalAlignment="Left" Height="43" Margin="224,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Avdelning" HorizontalAlignment="Left" Height="32" Margin="224,45,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxMeetingholder" HorizontalAlignment="Left" Height="43" Margin="421,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="421,45,0,0" VerticalAlignment="Top" Width="145"/>
-            <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="43" Margin="622,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="622,45,0,0" VerticalAlignment="Top" Width="145"/>
-            <Image HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="130" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality"/>
-            <TextBox x:Name="txtBoxGuestCo" HorizontalAlignment="Left" Height="43" Margin="796,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <TextBox x:Name="txtBoxGhID" HorizontalAlignment="Left" Height="43" Margin="977,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
-            <Button x:Name="btnFirst" Content="&lt;&lt;"  HorizontalAlignment="Left" Margin="231,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnFirst_Click" Grid.Row="1"/>
-            <Button x:Name="btnPrev" Content="&lt;"  HorizontalAlignment="Left" Margin="350,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnPrev_Click" Grid.Row="1"/>
-            <Button x:Name="btnNext" Content="&gt;"  HorizontalAlignment="Left" Margin="803,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnNext_Click" Grid.Row="1"/>
-            <Button x:Name="btnLast" Content="&gt;&gt;"  HorizontalAlignment="Left" Margin="935,303.8,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnLast_Click" Grid.Row="1"/>
-            <ComboBox x:Name="comboNumRows" HorizontalAlignment="Left" Margin="576,303.8,0,0" VerticalAlignment="Top" Width="169" Grid.Row="1" Height="34" SelectedIndex="0" SelectionChanged="comboNumRows_SelectionChanged"/>
-            <Label x:Name="lblNumberOf" Content="" HorizontalAlignment="Left" Margin="457,311.8,0,0" VerticalAlignment="Top" Grid.Row="1" Width="114"/>
-            <ListView x:Name="lstMH" HorizontalAlignment="Left" Height="443" Margin="52,146,0,0" VerticalAlignment="Top" Width="1273" Grid.RowSpan="2">
+            <TextBox x:Name="txtBoxDepartment" HorizontalAlignment="Left" Height="44" Margin="242,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Avdelning" HorizontalAlignment="Left" Height="32" Margin="242,70,0,0" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="txtBoxMeetingholder" HorizontalAlignment="Left" Height="44" Margin="439,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Gästmottagare" HorizontalAlignment="Left" Height="32" Margin="439,70,0,0" VerticalAlignment="Top" Width="145"/>
+            <TextBox x:Name="txtBoxGuest" HorizontalAlignment="Left" Height="44" Margin="640,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Label Content="Gäst" HorizontalAlignment="Left" Height="32" Margin="640,70,0,0" VerticalAlignment="Top" Width="145"/>
+            <Image HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="176" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Margin="18,26,0,0"/>
+            <TextBox x:Name="txtBoxGuestCo" HorizontalAlignment="Left" Height="44" Margin="814,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <TextBox x:Name="txtBoxGhID" HorizontalAlignment="Left" Height="44" Margin="995,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontSize="19" ForceCursor="True" TextChanged="txtBoxDepartment_TextChanged"/>
+            <Button x:Name="btnFirst" Content="&lt;&lt;"  HorizontalAlignment="Left" Margin="330,491,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnFirst_Click" Grid.Row="1"/>
+            <Button x:Name="btnPrev" Content="&lt;"  HorizontalAlignment="Left" Margin="450,491,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnPrev_Click" Grid.Row="1"/>
+            <Button x:Name="btnNext" Content="&gt;"  HorizontalAlignment="Left" Margin="841,491,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnNext_Click" Grid.Row="1"/>
+            <Button x:Name="btnLast" Content="&gt;&gt;"  HorizontalAlignment="Left" Margin="973,491,0,0" VerticalAlignment="Top" Width="100" Height="34" FontSize="22" Click="btnLast_Click" Grid.Row="1"/>
+            <ComboBox x:Name="comboNumRows" HorizontalAlignment="Left" Margin="614,491,0,0" VerticalAlignment="Top" Width="169" Grid.Row="1" Height="34" SelectedIndex="0" SelectionChanged="comboNumRows_SelectionChanged"/>
+            <Label x:Name="lblNumberOf" Content="" HorizontalAlignment="Left" Margin="640,460,0,0" VerticalAlignment="Top" Grid.Row="1" Width="114"/>
+            <ListView x:Name="lstMH" HorizontalAlignment="Left" Height="581" Margin="28,172,0,0" VerticalAlignment="Top" Width="1315" Grid.RowSpan="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Avdelning" DisplayMemberBinding="{Binding MhDepartment}"/>
@@ -40,8 +39,10 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Label Content="Företag" HorizontalAlignment="Left" Height="32" Margin="796,45,0,0" VerticalAlignment="Top" Width="145"/>
-            <Label Content="Anställningsnummer" HorizontalAlignment="Left" Height="32" Margin="977,45,0,0" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Företag" HorizontalAlignment="Left" Height="32" Margin="814,70,0,0" VerticalAlignment="Top" Width="145"/>
+            <Label Content="Anställningsnummer" HorizontalAlignment="Left" Height="32" Margin="995,70,0,0" VerticalAlignment="Top" Width="145"/>
+            <Button x:Name="btnBack" Content="&lt;---" HorizontalAlignment="Left" Margin="28,28,0,0" VerticalAlignment="Top" Width="75" Click="btnBack_Click"/>
+            <Label x:Name="label" Content="Besökshistorik" HorizontalAlignment="Left" Margin="640,21,0,0" VerticalAlignment="Top" Width="204" Height="49" FontSize="20" FontWeight="Bold"/>
         </Grid>
 
     </Grid>

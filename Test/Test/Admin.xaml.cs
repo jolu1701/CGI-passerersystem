@@ -32,8 +32,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 employees = db.GetAllEmployees();
+                dataGrid.ItemsSource = db.GetAllEmployees();
                 UpdateComboBoxes();
-                UpdateDatagrid();
             }
 
             catch (PostgresException ex)
@@ -107,6 +107,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 dataGrid.ItemsSource = db.GetAllEmployees();
+                SetLablesOnDatagrid();
             }
 
             catch (PostgresException ex)
@@ -115,10 +116,21 @@ namespace Test
             }
         }
 
+        public void SetLablesOnDatagrid()
+        {
+            dataGrid.Columns[0].Header = "Anställningsnr";
+            dataGrid.Columns[1].Header = "Förnamn";
+            dataGrid.Columns[2].Header = "Efternamn";
+            dataGrid.Columns[3].Header = "Telefonnr";
+            dataGrid.Columns[4].Header = "Avdelning";
+            dataGrid.Columns[5].Header = "Team";
+        }
+
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             choosenEmployee = (Employee)dataGrid.SelectedItem;
             btnDelEmp.IsEnabled = true;
+            SetLablesOnDatagrid();
         }
 
         private void btnAdminTeam_Click(object sender, RoutedEventArgs e)
@@ -150,7 +162,8 @@ namespace Test
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
-       
+            MainWindow mw = new MainWindow();                   
+            mw.Show();            
         }
     }
 }

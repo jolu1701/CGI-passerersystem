@@ -61,20 +61,7 @@ namespace Test
                 
             }
         }
-
-        //private void btnAddmeetingguest_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        DatabaseConnections db = new DatabaseConnections();
-        //        db.AddMeetingGuest(Int32.Parse(txtGuestid.Text), Int32.Parse(txtMeetingid.Text), txtBadgey.Text);
-        //    }
-
-        //    catch (PostgresException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+              
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {

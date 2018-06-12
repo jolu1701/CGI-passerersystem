@@ -28,5 +28,7 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="108,564,0,0" TextWrapping="Wrap" Text="Lägg till anställd" VerticalAlignment="Top" Width="99" TextDecorations="Underline"/>
         <Image HorizontalAlignment="Left" Height="124" VerticalAlignment="Top" Width="140" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Margin="10,2,0,0"/>
         <Button x:Name="btnBack" Content="&lt;---" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" Width="40" Click="btnBack_Click"/>
+        <Label x:Name="label" Content="Administration" HorizontalAlignment="Left" Margin="649,10,0,0" VerticalAlignment="Top" Width="204" Height="49" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="label_Copy" Content="Samtliga anställda" HorizontalAlignment="Left" Margin="798,90,0,0" VerticalAlignment="Top" Width="186" Height="30"/>
     </Grid>
 </Page>

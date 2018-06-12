@@ -14,9 +14,9 @@
             <TextBox Name="txtUserName" Background="White" FontSize="18"></TextBox>
             <Label Content="Lösenord" Foreground="Black" FontSize="18"></Label>
             <TextBox Name="txtPassword" Background="White" FontSize="18"></TextBox>
-            <Button x:Name="btnLogin" FontSize="18" Content="Logga in" Width="100" Margin="110,20" Height="30" Click="btnLogin_Click"/>
-            <Button x:Name="btnChangepw" FontSize="16" Content="Byt lösenord" Width="100" Margin="110,5" Height="30" Click="btnChangepw_Click"></Button>
+            <Button x:Name="btnLogin" FontSize="18" Content="Logga in" Margin="103,20,97,20" Height="30" Click="btnLogin_Click"/>
+            <Button x:Name="btnChangepw" FontSize="16" Content="Byt lösenord" Margin="103,5,97,5" Height="30" Click="btnChangepw_Click"/>
         </StackPanel>
-        
+
     </Border>
 </Window>
