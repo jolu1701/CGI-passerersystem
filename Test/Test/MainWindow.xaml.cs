@@ -40,8 +40,7 @@ namespace Test
                 MessageBox.Show(ex.Message);
             }
         }
-
-
+        
         
 
         private void dataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -118,6 +117,7 @@ namespace Test
                 btnViewTodaysMeetings.IsEnabled = true;
                 btnViewUpcomingMeetings.IsEnabled = true;
                 lblMeeting.Content = "Alla möten";
+                SetLablesOnDatagrid();
             }
             catch (PostgresException ex)
             {
@@ -135,6 +135,11 @@ namespace Test
                 btnViewTodaysMeetings.IsEnabled = false;
                 btnViewUpcomingMeetings.IsEnabled = true;
                 lblMeeting.Content = "Dagens möten";
+
+                dataGrid.Columns[0].Header = "Mötesnr";
+                dataGrid.Columns[1].Header = "Tid";
+                dataGrid.Columns[2].Header = "Mötesansvarig";
+                dataGrid.Columns[3].Header = "Noteringar";
             }
             catch (PostgresException ex)
             {
@@ -152,11 +157,20 @@ namespace Test
                 btnViewTodaysMeetings.IsEnabled = true;
                 btnViewUpcomingMeetings.IsEnabled = false;
                 lblMeeting.Content = "Kommande möten";
+                SetLablesOnDatagrid();
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void SetLablesOnDatagrid()
+        {
+            dataGrid.Columns[0].Header = "Mötesnr";
+            dataGrid.Columns[1].Header = "Datum och tid";
+            dataGrid.Columns[2].Header = "Mötesansvarig";
+            dataGrid.Columns[3].Header = "Noteringar";
         }
     }
 }

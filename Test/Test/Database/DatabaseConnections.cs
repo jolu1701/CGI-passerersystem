@@ -273,7 +273,7 @@ namespace Test.Database
             Meeting m;
             List<Meeting> meetings = new List<Meeting>();
 
-            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid";
+            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid Order by me.date";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -308,7 +308,7 @@ namespace Test.Database
             Meeting m;
             List<Meeting> meetings = new List<Meeting>();
 
-            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date = current_date";
+            string stmt = "select me.meetingid,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date = current_date order by me.time";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
@@ -317,19 +317,18 @@ namespace Test.Database
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
-                    {
-                        DateTime Date = reader.GetDateTime(1);
-                        string Time = reader.GetString(2);
+                    {                        
+                        string Time = reader.GetString(1);
                         Time = Time.Remove(Time.Length - 3);
 
                         m = new Meeting()
                         {
                             MeetingID = reader.GetInt32(0),
-                            MeetingHolder = reader.GetString(3) + " " + reader.GetString(4),
-                            Note = reader.GetString(5)
+                            MeetingHolder = reader.GetString(2) + " " + reader.GetString(3),
+                            Note = reader.GetString(4)
                         };
 
-                        m.DateAndTime = Date.ToString("D") + " " + Time;
+                        m.DateAndTime = Time;
 
                         meetings.Add(m);
                     }
@@ -343,7 +342,7 @@ namespace Test.Database
             Meeting m;
             List<Meeting> meetings = new List<Meeting>();
 
-            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date >= current_date";
+            string stmt = "select me.meetingid,me.date,me.time::varchar,em.firstname,em.surname,me.note from meeting me inner join employee em on me.fk_meetingholder = em.employeeid where me.date >= current_date order by me.date";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
