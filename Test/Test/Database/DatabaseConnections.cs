@@ -28,7 +28,6 @@ namespace Test.Database
                 {
                     while (reader.Read())
                     {
-
                         e = new Employee()
                         {
                             id = reader.GetInt32(0),
