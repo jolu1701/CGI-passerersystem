@@ -23,17 +23,23 @@ namespace Test
     /// </summary>
     public partial class AdminDepartment : Window
     {
+
+        List<Department> departments;
+
         public AdminDepartment()
         {
             InitializeComponent();
-
-            DatabaseConnections db = new DatabaseConnections();
-            List<Department> departments = db.GetAllDepartments();
-
-            listBoxDepartment.ItemsSource = departments;       
+            UpdateListBox();
         }
 
         Department selecteddepartment;
+
+        private void UpdateListBox()
+        {
+            DatabaseConnections db = new DatabaseConnections();
+            departments = db.GetAllDepartments();
+            listBoxDepartment.ItemsSource = departments;
+        }
 
         private void btnAddDep_Click(object sender, RoutedEventArgs e)
         {
@@ -43,6 +49,7 @@ namespace Test
                 db.AddDepartment(txtDepartment.Text);
                 txtDepartment.Text = String.Empty;
                 btnAddDep.IsEnabled = false;
+                UpdateListBox();
             }
             catch (PostgresException ex)
             {
@@ -56,6 +63,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.RemoveDepartment(selecteddepartment);
+                UpdateListBox();
             }
             catch (PostgresException ex)
             {
@@ -84,6 +92,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.EditDepartment(selecteddepartment, textBoxNewName.Text);
+                UpdateListBox();
+                textBoxNewName.Text = String.Empty;
             }
             catch (PostgresException ex)
             {

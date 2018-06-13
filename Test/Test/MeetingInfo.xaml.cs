@@ -171,6 +171,7 @@ namespace Test
             try
             {                
                 selRightEmpl = (Model.Employee)dataGridAllEmployees.SelectedItem;
+                btnAddEmployeeToMeet.IsEnabled = true;
             }
             catch (Exception)
             {
@@ -184,7 +185,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.RemoveEmployeeFromMeeting(selLeftEmpl);
-                UpdateDatagrid(selMeet);                
+                UpdateDatagrid(selMeet);
+                btnRemoveEmployeeFromMeet.IsEnabled = true;    
             }
             catch (PostgresException ex)
             {

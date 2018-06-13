@@ -52,6 +52,10 @@ namespace Test
             {
                 MessageBox.Show("Du måste ange datum och tid för att skapa ett nytt möte.");
             }
+            else if(txtDate.Text.Length < 10 || txtTime.Text.Length < 5)
+            {
+                MessageBox.Show("Du måste ange datum och tid enligt instruktionerna");
+            }
             else
             {
                 try

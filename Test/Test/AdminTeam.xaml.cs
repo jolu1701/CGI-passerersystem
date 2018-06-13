@@ -23,18 +23,22 @@ namespace Test
     /// </summary>
     public partial class AdminTeam : Window
     {
+        List<Team> teams;
+
         public AdminTeam()
         {
             InitializeComponent();
-
-            DatabaseConnections db = new DatabaseConnections();
-            List<Team> teams = db.GetAllTeams();
-
-            listBoxTeam.ItemsSource = teams;
+            UpdateListBox();            
         }
 
         Team selectedteam;
 
+        private void UpdateListBox()
+        {
+            DatabaseConnections db = new DatabaseConnections();
+            teams = db.GetAllTeams();
+            listBoxTeam.ItemsSource = teams;
+        }
 
         private void btnAddTeam_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +46,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.AddTeam(txtTeam.Text);
+                UpdateListBox();
+                txtTeam.Text = string.Empty;
             }
             catch (PostgresException ex)
             {
@@ -55,6 +61,7 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.RemoveTeam(selectedteam);
+                UpdateListBox();
             }
             catch (PostgresException ex)
             {
@@ -73,6 +80,8 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.EditTeam(selectedteam,textBoxNewName.Text);
+                UpdateListBox();
+                textBoxNewName.Text = string.Empty;
             }
             catch (PostgresException ex)
             {

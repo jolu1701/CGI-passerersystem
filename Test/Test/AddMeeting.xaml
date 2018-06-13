@@ -13,7 +13,7 @@
         <Label Content="Kommentar" HorizontalAlignment="Left" Margin="573,227,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name ="txtTime" HorizontalAlignment="Left" Height="23" Margin="573,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
         <Label Content="Datum YYYY-MM-DD" HorizontalAlignment="Left" Margin="573,86,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTime" Content="Tid HH:MM:SS" HorizontalAlignment="Left" Margin="573,155,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTime" Content="Tid HH:MM" HorizontalAlignment="Left" Margin="573,155,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNote" HorizontalAlignment="Left" Height="80" Margin="573,258,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
         <ListBox x:Name="lstEmployees" HorizontalAlignment="Left" Height="328" Margin="55,58,0,0" VerticalAlignment="Top" Width="458" SelectionChanged="lstEmployees_SelectionChanged"/>
         <Button x:Name="btnCreateMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="622,352,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateMeeting_Click" Background="#FFBFB4B4" FontWeight="Bold" IsEnabled="False"/>

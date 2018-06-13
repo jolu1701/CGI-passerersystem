@@ -4,28 +4,27 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Test"
-      mc:Ignorable="d" 
-      d:DesignHeight="900" d:DesignWidth="1400"
-      Title="Admin">
+      mc:Ignorable="d" d:DesignWidth="1400"
+      Title="Admin" Height="865.5">
 
     <Grid Background="White">
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="276" Margin="17,550,0,0" Stroke="LightGray" VerticalAlignment="Top" Width="284"/>
-        <Button x:Name="btnAddEmployee" Content="Spara till databas" HorizontalAlignment="Left" Margin="104,785,0,0" VerticalAlignment="Top" Width="108" Click="btnAddEmployee_Click" IsEnabled="False"/>
-        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="22" Margin="98,595,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="22" Margin="98,633,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="24" Margin="98,671,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="26,595,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="26,633,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
-        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="26,673,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="22"><Run Text="Telefonnr"/><LineBreak/><Run/></TextBlock>
-        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="98,709,0,0" VerticalAlignment="Top" Width="190"/>
-        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="98,745,0,0" VerticalAlignment="Top" Width="190" SelectionChanged="comboBoxTeam_SelectionChanged"/>
-        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="26,709,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24" Text="Avdelning"/>
-        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="26,745,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24" Text="Grupp"/>
-        <Button x:Name="btnDelEmp" HorizontalAlignment="Left" Margin="1250,831,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click" IsEnabled="False"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="322,120,0,0" VerticalAlignment="Top" Height="706" Width="1048" SelectionChanged="dataGrid_SelectionChanged"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="276" Margin="17,528,0,0" Stroke="LightGray" VerticalAlignment="Top" Width="284"/>
+        <Button x:Name="btnAddEmployee" Content="Spara till databas" HorizontalAlignment="Left" Margin="104,764,0,0" VerticalAlignment="Top" Width="108" Click="btnAddEmployee_Click" IsEnabled="False"/>
+        <TextBox x:Name="txtFirstName" HorizontalAlignment="Left" Height="22" Margin="98,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="txtSurName" HorizontalAlignment="Left" Height="22" Margin="98,612,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="txtPhoneNumber" HorizontalAlignment="Left" Height="24" Margin="98,650,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="26,574,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="22"><Run Text="Förnamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="26,612,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24"><Run Text="Efternamn"/><LineBreak/><Run/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="26,652,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="22"><Run Text="Telefonnr"/><LineBreak/><Run/></TextBlock>
+        <ComboBox x:Name="comboBoxDepartment" HorizontalAlignment="Left" Margin="98,688,0,0" VerticalAlignment="Top" Width="190"/>
+        <ComboBox x:Name="comboBoxTeam" HorizontalAlignment="Left" Margin="98,724,0,0" VerticalAlignment="Top" Width="190" SelectionChanged="comboBoxTeam_SelectionChanged"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="26,688,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24" Text="Avdelning"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="26,724,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68" Height="24" Text="Grupp"/>
+        <Button x:Name="btnDelEmp" HorizontalAlignment="Left" Margin="1250,809,0,0" VerticalAlignment="Top" Width="120" Click="btnDelEmp_Click" IsEnabled="False" Height="31" Content="Ta bort anställd"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="322,120,0,0" VerticalAlignment="Top" Height="684" Width="1048" SelectionChanged="dataGrid_SelectionChanged"/>
         <Button x:Name="btnAdminDepartmen" Content="Administrera &#xA;avdelningar" HorizontalAlignment="Left" Margin="17,120,0,0" VerticalAlignment="Top" Width="284" Height="66" FontSize="22" Click="btnAdminDepartmen_Click"/>
         <Button x:Name="btnAdminTeam" Content="Administrera &#xA;team" HorizontalAlignment="Left" Margin="17,208,0,0" VerticalAlignment="Top" Width="284" Height="63" FontSize="22" Click="btnAdminTeam_Click"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="108,564,0,0" TextWrapping="Wrap" Text="Lägg till anställd" VerticalAlignment="Top" Width="99" TextDecorations="Underline"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="108,542,0,0" TextWrapping="Wrap" Text="Lägg till anställd" VerticalAlignment="Top" Width="99" TextDecorations="Underline"/>
         <Image HorizontalAlignment="Left" Height="124" VerticalAlignment="Top" Width="140" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Margin="10,2,0,0"/>
         <Button x:Name="btnBack" Content="&lt;---" HorizontalAlignment="Left" Margin="17,10,0,0" VerticalAlignment="Top" Width="40" Click="btnBack_Click"/>
         <Label x:Name="label" Content="Administration" HorizontalAlignment="Left" Margin="649,10,0,0" VerticalAlignment="Top" Width="204" Height="49" FontSize="20" FontWeight="Bold"/>

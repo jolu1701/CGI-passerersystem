@@ -20,10 +20,10 @@
         <Button x:Name="btnCheckOut" Content="Ut" HorizontalAlignment="Left" Margin="636,129,0,0" VerticalAlignment="Top" Width="26" Height="25" Background="#FFF1C4C4" Click="btnCheckOut_Click" IsEnabled="False"/>
         <Button x:Name="btnDeleteGuest" Content="Ta bort gäst" HorizontalAlignment="Left" Margin="556,74,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteGuest_Click" IsEnabled="False"/>
         <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="172,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.506,0.502" Width="124" Height="21"><Run Text="Anställda"/><Run Text="-mötesgäster"/><LineBreak/><Run/></TextBlock>
-        <DataGrid x:Name="dataGridMeetingEmployees" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Height="141" Width="471" HorizontalGridLinesBrush="#FFA2A2A2" VerticalGridLinesBrush="#FFA0A0A0" SelectionChanged="dataGridMeetingEmployees_SelectionChanged" IsReadOnly="True"/>
-        <DataGrid x:Name="dataGridAllEmployees" HorizontalAlignment="Left" Margin="496,345,0,0" VerticalAlignment="Top" Height="141" Width="392" SelectionChanged="dataGridAllEmployees_SelectionChanged" IsReadOnly="True"/>
-        <Button x:Name="btnAddEmployeeToMeet" Content="Lägg till" HorizontalAlignment="Left" Margin="813,491,0,0" VerticalAlignment="Top" Width="75" Click="btnAddEmployeeToMeet_Click"/>
-        <Button x:Name="btnRemoveEmployeeFromMeet" Content="Ta bort deltagare" HorizontalAlignment="Left" Margin="10,491,0,0" VerticalAlignment="Top" Width="108" Click="btnRemoveEmployeeFromMeet_Click"/>
+        <DataGrid x:Name="dataGridMeetingEmployees" HorizontalAlignment="Left" Margin="10,345,0,0" VerticalAlignment="Top" Height="141" Width="445" HorizontalGridLinesBrush="#FFA2A2A2" VerticalGridLinesBrush="#FFA0A0A0" SelectionChanged="dataGridMeetingEmployees_SelectionChanged" IsReadOnly="True"/>
+        <DataGrid x:Name="dataGridAllEmployees" HorizontalAlignment="Left" Margin="470,345,0,0" VerticalAlignment="Top" Height="141" Width="418" SelectionChanged="dataGridAllEmployees_SelectionChanged" IsReadOnly="True"/>
+        <Button x:Name="btnAddEmployeeToMeet" Content="Lägg till" HorizontalAlignment="Left" Margin="813,491,0,0" VerticalAlignment="Top" Width="75" Click="btnAddEmployeeToMeet_Click" IsEnabled="False"/>
+        <Button x:Name="btnRemoveEmployeeFromMeet" Content="Ta bort deltagare" HorizontalAlignment="Left" Margin="10,491,0,0" VerticalAlignment="Top" Width="108" Click="btnRemoveEmployeeFromMeet_Click" IsEnabled="False"/>
 
     </Grid>
 </Window>
