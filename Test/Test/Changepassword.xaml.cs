@@ -34,15 +34,26 @@ namespace Test
             MessageBox.Show("Lösenordet är ändrat");
             this.Close();
         }
+        public void NewPassword()
+        {
+            DatabaseConnections db = new DatabaseConnections();
+            string number = db.LogintoAdmin(txtUserName.Text, txtPassword.Text);
+            if (number == "1")
+            {
+                db.ChangePassword(txtUserName.Text, txtPassword.Text, txtNewpassword.Text);
+                Update();
+            }
+            else
+                MessageBox.Show("Fel användarnamn eller lösenord");
+        }
         
 
         private void btnChangepassword_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                DatabaseConnections db = new DatabaseConnections();
-                db.ChangePassword(txtUserName.Text, txtPassword.Text, txtNewpassword.Text);
-                //Update();
+                NewPassword();
+                
             }
 
             catch (PostgresException ex)
