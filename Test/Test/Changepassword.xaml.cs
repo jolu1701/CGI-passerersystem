@@ -53,7 +53,6 @@ namespace Test
             try
             {
                 NewPassword();
-                
             }
 
             catch (PostgresException ex)
