@@ -238,16 +238,32 @@ namespace Test.Database
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password", password);
-                    //cmd.ExecuteNonQuery();
 
                     if (cmd.ExecuteScalar().ToString() == "1")
                     {
-                        return answer = "1";
+                        answer = "1";
                     }
                     else
-                        return answer = "0";
+                        answer = "0";
+
                 }
             }
+
+            stmt = "select clearance_level from login where username = @username";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    answer += cmd.ExecuteScalar().ToString();
+
+                }
+            }
+
+            return answer;
+
         }
 
         public void ChangePassword(string username, string password, string newpassword)
@@ -460,8 +476,6 @@ namespace Test.Database
 
         public void CheckOutGuest(GuestExtras g)
         {
-            g.checkOut = DateTime.Now;
-
             string stmt = "update meeting_guest set checkout = @co where fk_guestid = @id";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -477,10 +491,8 @@ namespace Test.Database
             }
         }
 
-        public void CheckInGuest(GuestExtras g)
+        public void CheckInGuest(int id)
         {
-            g.checkIn = DateTime.Now;
-
             string stmt = "update meeting_guest set checkin = @ci where fk_guestid = @id";
 
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
@@ -489,12 +501,30 @@ namespace Test.Database
                 using (var cmd = new NpgsqlCommand(stmt, conn))
                 {
                     cmd.Parameters.AddWithValue("ci", DateTime.Now);
-                    cmd.Parameters.AddWithValue("id", g.id);
+                    cmd.Parameters.AddWithValue("id", id);
                     cmd.ExecuteNonQuery();
                 }
 
             }
         }
+
+        public void UpdateBadge(string status, int id)
+        {
+            string stmt = "update meeting_guest set badge = @status where fk_guestid = @id";
+
+            using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(stmt, conn))
+                {
+                    cmd.Parameters.AddWithValue("status", status);
+                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
 
         public void RemoveGuestFromMeeting(GuestExtras g)
         {

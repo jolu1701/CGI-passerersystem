@@ -1,0 +1,21 @@
+﻿<Window x:Class="Test.MeetingHolder"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        mc:Ignorable="d"
+        Title="MeetingHolder" Height="901.167" Width="1400.667">
+    <Grid>
+        <Frame Content="" HorizontalAlignment="Left" Height="661" VerticalAlignment="Top" Width="1301" Margin="46,100,-439,-182" Background="#FFE8E8E8" BorderBrush="#FF231C1C" BorderThickness="1,1,1,1"/>
+        <Image HorizontalAlignment="Left" Height="101" Margin="31,-33,0,0" VerticalAlignment="Top" Width="140" Source="Image/cgi-logo-.png" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill"/>
+        <Label x:Name="lblMeeting" Content="Dagens möten" HorizontalAlignment="Left" Margin="637,98,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="91,135,-385,-79" VerticalAlignment="Top" Height="523" Width="1202" MouseDoubleClick="dataGrid_MouseDoubleClick"  SelectionChanged="dataGrid_SelectionChanged" HorizontalGridLinesBrush="#FFA0A0A0" VerticalGridLinesBrush="#FFB8B8B8" IsReadOnly="True"/>
+        <Button x:Name="btnCreateaMeeting" Content="Skapa möte" HorizontalAlignment="Left" Margin="120,686,0,-147" VerticalAlignment="Top" Width="100" Height="40" FontSize="14" Click="btnCreateaMeeting_Click" FontWeight="Bold" Background="{x:Null}" />
+        <Button x:Name="btnViewAllMeetings" Content="Se alla möten" HorizontalAlignment="Left" Margin="1190,686,-393,-147" VerticalAlignment="Top" Width="111" Height="40" FontSize="14" FontWeight="Bold" Click="btnViewAllMeetings_Click"/>
+        <Label x:Name="lblAdmin" Content="Personal" HorizontalAlignment="Left" Margin="47,63,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Width="140"/>
+        <Button x:Name="btnViewUpcomingMeetings" Content="Se kommande möten" HorizontalAlignment="Left" Margin="1032,686,-277,-147" VerticalAlignment="Top" Width="153" Height="40" FontSize="14" FontWeight="Bold" Click="btnViewUpcomingMeetings_Click"/>
+        <Button x:Name="btnViewTodaysMeetings" Content="Se dagens möten" HorizontalAlignment="Left" Margin="902,686,-119,-147" VerticalAlignment="Top" Width="125" Height="40" FontSize="14" FontWeight="Bold" IsEnabled="False" Click="btnViewTodaysMeetings_Click"/>
+
+    </Grid>
+</Window>

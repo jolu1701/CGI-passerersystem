@@ -38,7 +38,7 @@ namespace Test
         {
             DatabaseConnections db = new DatabaseConnections();
             string number = db.LogintoAdmin(txtUserName.Text, txtPassword.Text);
-            if (number == "1")
+            if (number[0] == '1')
             {
                 db.ChangePassword(txtUserName.Text, txtPassword.Text, txtNewpassword.Text);
                 Update();

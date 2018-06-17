@@ -36,13 +36,21 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 string number = db.LogintoAdmin(txtUserName.Text, txtPassword.Text);
-                if (number == "1")
+                if (number == "12")
                 {
                     MainWindow mainwindow = new MainWindow();
                     mainwindow.Show();
                     this.Close();
 
                 }
+
+                else if(number == "11")
+                {
+                    MeetingHolder mh = new MeetingHolder();
+                    mh.Show();
+                    this.Close();
+                }
+
                 else
                     MessageBox.Show("Fel användarnamn eller lösenord");
             }

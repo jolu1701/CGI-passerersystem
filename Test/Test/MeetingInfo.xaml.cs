@@ -82,12 +82,29 @@ namespace Test
             {
                 DatabaseConnections db = new DatabaseConnections();
                 db.CheckOutGuest(selGuest);
-                UpdateDatagrid(selMeet);
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            MessageBoxResult result = MessageBox.Show("Har gästen återlämnat sin besöksbricka?",
+                                                      "Besöksbrickan?",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    DatabaseConnections db = new DatabaseConnections();
+                    db.UpdateBadge("Återlämnad",selGuest.id);
+                }
+                catch (PostgresException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            UpdateDatagrid(selMeet);
         }
 
         private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -143,13 +160,30 @@ namespace Test
             try
             {
                 DatabaseConnections db = new DatabaseConnections();
-                db.CheckInGuest(selGuest);
-                UpdateDatagrid(selMeet);
+                db.CheckInGuest(selGuest.id);                
             }
             catch (PostgresException ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+            MessageBoxResult result = MessageBox.Show("Har gästen fått en besöksbricka?",
+                                                      "Besöksbrickan?",
+                                                      MessageBoxButton.YesNo,
+                                                      MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    DatabaseConnections db = new DatabaseConnections();
+                    db.UpdateBadge("Utlämnad", selGuest.id);
+                }
+                catch (PostgresException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            UpdateDatagrid(selMeet);
         }
 
         private void btnAddEmployeeToMeet_Click(object sender, RoutedEventArgs e)
@@ -199,6 +233,7 @@ namespace Test
             try
             {
                 selLeftEmpl = (Model.Employee)dataGridMeetingEmployees.SelectedItem;
+                btnRemoveEmployeeFromMeet.IsEnabled = true;
             }
             catch (Exception)
             {
