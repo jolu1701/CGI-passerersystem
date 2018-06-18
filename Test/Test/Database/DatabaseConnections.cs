@@ -244,13 +244,17 @@ namespace Test.Database
                         answer = "1";
                     }
                     else
+                    {
                         answer = "0";
+                    }
 
                 }
             }
 
-            stmt = "select clearance_level from login where username = @username";
+            try
+            {
 
+            stmt = "select clearance_level from login where username = @username";
             using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["dbConn"].ConnectionString))
             {
                 conn.Open();
@@ -258,8 +262,13 @@ namespace Test.Database
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     answer += cmd.ExecuteScalar().ToString();
-
                 }
+            }
+
+            }
+            catch (Exception)
+            {
+                
             }
 
             return answer;
